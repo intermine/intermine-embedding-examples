@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Is Object in a Bag?</title>
+    <title>Publications Displayer</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -20,7 +20,7 @@
     <script type="text/javascript" src="../../src/service.js"></script>
     <script type="text/javascript" src="../../src/query.js"></script>
 
-    <script src="../js/object-in-bag.js"></script>
+    <script src="../js/publications-displayer.js"></script>
   </head>
 
   <body>
@@ -31,8 +31,8 @@
           <a class="brand" href="#">InterMine JavaScript API Examples</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a>Is Object in a Bag?</a></li>
-              <li><a href="publications-displayer.html">Publications Displayer</a></li>
+              <li><a href="object-in-bag.html">Is Object in a Bag?</a></li>
+              <li class="active"><a>Publications Displayer</a></li>
             </ul>
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
@@ -47,20 +47,11 @@
     <div class="container">
         <div class="row">
           <div class="span8">
-            <h2>Is Object in a Bag? <small>on FlyMine server</small></h2>
-            <p>First 10 genes on FlyMine preview that contain <em>ze</em> in their symbol:</p>
-            <table id="ze-genes" class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Symbol</th>
-                  <th>Ensembl ID</th>
-                  <th>InterMine ID</th>
-                  <th>In Bag?</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <h2>Publications Displayer <small>from FlyMine server</small></h2>
+            <p>For gene <em>tll (FBgn0003720)</em></p>
+            <div id="displayer">
+                &nbsp;
+            </div>
           </div>
         </div>
     </div>
