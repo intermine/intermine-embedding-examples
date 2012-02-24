@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Pointer Collections</title>
+    <title>Displayer Client</title>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -11,7 +11,6 @@
 
     <script type="text/javascript" src="js/lib/jquery-1.7.js"></script>
     <script type="text/javascript" src="js/lib/underscore.js"></script>
-    <script type="text/javascript" src="js/lib/backbone.js"></script>
 
     <script type="text/javascript" src="js/App.js"></script>
   </head>
@@ -21,11 +20,11 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container" style="width: auto;">
-          <a class="brand" href="#">Pointer Collections</a>
+          <a class="brand" href="#">Displayer Client</a>
           <div class="nav-collapse">
             <ul class="nav pull-right">
               <li class="divider-vertical"></li>
-              <li><a href="https://github.com/radekstepan/backbone.js-pointer-collections">Fork me on GitHub</a></li>
+              <li><a href="https://github.com/radekstepan/intermine-displayer-client">Fork me on GitHub</a></li>
             </ul>
           </div>
         </div>
@@ -37,34 +36,11 @@
         <div class="row">
 
           <div class="span5">
-            <h2>Tags</h2>
-            <p>A <code>Tags</code> Collection with <code>Tag</code> Models.</p>
-            <table id="tags" class="table table-striped">
-              <thead>
-                <tr>
-                  <th>cid</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <h2>Example Displayer</h2>
+            <p>A Displayer is initialized by combining a .css, .html and .js source.</p>
           </div>
 
-          <div class="span7">
-            <h2>TagsCategories to Tags <small>using PointerCollection</small></h2>
-            <p>Clicking a tag will trigger an event on the underlying <code>Tag</code>.</p>
-            <table id="tags-categories" class="table table-striped">
-              <thead>
-                <tr>
-                  <th>cid</th>
-                  <th>Category</th>
-                  <th>Tags</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <div id="displayer" class="span7"></div>
 
         </div>
     </div>
