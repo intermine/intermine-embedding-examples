@@ -11,6 +11,8 @@ class Displayers.Resources
 
     store: {}
 
+    service: new intermine.Service(root: "www.flymine.org/query")
+
     # Save my number and call me.
     set: (key, prefix, count, options, callback) =>
         @store[key] =
@@ -47,12 +49,31 @@ class Displayers.Resources
         else
             console.log "#{key} resource not recognized"
 
+    # ----------- dynamic loading
+
+    getTemplate: (cb, prefix, path) =>
+        $.getScript "js/templates/#{prefix}/#{path}", =>
+            @loaded(cb, "template")
+
+    getPresenter: (cb, prefix, path) =>
+        script = document.createElement("script")
+        script.type = "text/javascript"
+        script.language = "javascript"
+        script.src = "js/presenters/#{prefix}/#{path}"
+        head = document.getElementsByTagName("head")[0]
+        head.appendChild(script)
+
+    getData: (cb, query) =>
+        @service.query(query
+        , (q) =>
+            q.records (json) =>
+                @loaded(cb, "data", json)
+        )
+
 
 class Displayers.Client
     
-    constructor: ->
-        @resources = Displayers.Resources = new Displayers.Resources()
-        @service = new intermine.Service(root: "www.flymine.org/query")
+    constructor: -> @resources = Displayers.Resources = new Displayers.Resources()
 
     # Render displayer.
     load: (imObj, displayerName, el) =>
@@ -76,6 +97,7 @@ class Displayers.Client
             "el": el
             "templates": {}
             "data": {}
+        
         console.log "loading #{options.displayerName} in #{options.el}"
 
         cb = config[displayerName].callback
@@ -85,29 +107,21 @@ class Displayers.Client
         @resources.set(cb, config[displayerName].prefix, 4, options, @render)
 
         # Grab the data.
-        @service.query
+        @resources.getData(cb,
             select: [ "publications.title", "publications.year", "publications.journal", "publications.authors.name" ]
             from: "Gene"
             where:
                 "ncbiGeneNumber":
                     "=": 34430 # TfIIB
             limit: 10
-        , (q) =>
-            q.records (json) =>
-                @resources.loaded(cb, "data", json[0].publications)
+        )
 
         # Grab templates, they go globally so we can use getScript and not pass anything to callback.
         for path in config[options.displayerName].templates
-            $.getScript "js/templates/#{prefix}/#{path}", =>
-                @resources.loaded(cb, "template")
+            @resources.getTemplate(cb, prefix, path)
 
         # Append a new presenter script.
-        script = document.createElement("script")
-        script.type = "text/javascript"
-        script.language = "javascript"
-        script.src = "js/presenters/#{prefix}/#{config[options.displayerName].presenter}"
-        head = document.getElementsByTagName("head")[0]
-        head.appendChild(script)
+        @resources.getPresenter(cb, prefix, config[options.displayerName].presenter)
 
     # Is called with a loaded object.
     render: (Clazz, options) =>

@@ -13,7 +13,7 @@ class Backboned extends Backbone.View
         @[k] = v for k, v of o
 
         # Make data into a Model.
-        @model = new Publications(@data)
+        @model = new Publications(@data[0].publications)
 
     render: ->
         # The header.
