@@ -89,12 +89,12 @@ class Displayers.Client
         config =
             "Publications":
                 prefix: "publications"
-                templates: [ "_header.js", "_table.js" ]
+                templates: [ "_header.js", "_table.js", "_paginator.js" ]
                 presenter: "Publications.js"
                 callback:  "g5VekAcU"
             "backbone.js Publications":
                 prefix: "publications"
-                templates: [ "_header.js", "_table.js" ]
+                templates: [ "_header.js", "_table.js", "_paginator.js" ]
                 presenter: "Publications.backboned.js"
                 callback:  "xEnEYa35"
 
@@ -111,8 +111,8 @@ class Displayers.Client
         cb = config[displayerName].callback
         prefix = config[options.displayerName].prefix
 
-        # Set up 4 resources on the callback (1x presenter, 2x templates, 1x payload).
-        @resources.set(cb, config[displayerName].prefix, 4, options, @render)
+        # Set up 5 resources on the callback (1x presenter, 3x templates, 1x payload).
+        @resources.set(cb, config[displayerName].prefix, 5, options, @render)
 
         # Grab the data.
         @resources.getData(cb,
@@ -122,7 +122,6 @@ class Displayers.Client
                 "ncbiGeneNumber":
                     "=": 34430 # TfIIB
             joins: [ "publications.authors" ]
-            limit: 10
         )
 
         # Grab templates, they go globally so we can use getScript and not pass anything to callback.
