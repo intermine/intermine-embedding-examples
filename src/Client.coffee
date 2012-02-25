@@ -30,6 +30,13 @@ class Displayers.Resources
             # One thing loaded.
             resource.count -= 1
 
+            # Progress bar :).
+            bar = $("#progress .bar")
+            p = parseInt(bar.attr("data-percent"))
+            bar.width("#{p += 1}%") for i in [0..9]
+            bar.attr("data-percent", p)
+            bar.parent().delay(1000).fadeOut("slow").remove() if p is 100
+
             # Different handling based on resource type.
             switch type
                 # Presenter.
