@@ -37,7 +37,18 @@
 
           <div class="span5">
             <h2>Example Displayer</h2>
-            <p>A Displayer is initialized by combining a .css, .html and .js source.</p>
+            <p>A Displayer is rendered by combining an .html and .js source. The steps are as follows:</p>
+            <ol>
+              <li>Ask the client library for a displayer for an InterMine object.</li>
+              <li>The library loads the <span class="label label-success">data</span> part (JSON),
+                <span class="label label-success">templates</span> (html) from the server while providing a callback
+                for when <span class="label label-success">presenter</span> ("how should data be rendered) is returned
+                from the server.</li>
+              <li>The presenter is initialized with a bunch of options like imObj, displayer name, data payload etc.</li>
+              <li><span class="label label-info">underscore.js</span> templating function is used to populate templates
+                from the server with the payload.</li>
+              <li>As presenters are arbitrary objects with functions, any kind of behavior can be encompassed.</li>
+            </ol>
           </div>
 
           <div id="displayer" class="span7"></div>

@@ -9,15 +9,17 @@
         <th>Title</th>
       </tr>
     </thead>
-    <tbody></tbody>
+    <tbody>
+      <% for (var i = 0; i < data.length; i++) { %>
+        <% var row = data[i]; %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= row.authors %></td>
+          <td><%= row.year %></td>
+          <td><%= row.journal %></td>
+          <td><%= row.title %></td>
+        </tr>
+      <% } %>
+    </tbody>
   </table>
-</script>
-
-<script type="text/template" id="row-template">
-  <tr>
-    <td><%= i =></td>
-    <td><%= authors =></td>
-    <td><%= journal =></td>
-    <td><%= title =></td>
-  </tr>
 </script>
