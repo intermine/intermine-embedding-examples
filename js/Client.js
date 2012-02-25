@@ -1,17 +1,22 @@
 (function() {
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  window.Displayers = (window.Displayers && console.log("give me my var back!")) || {};
+  window.Displayers = (window.Displayers && console.log("things may go #@!")) || {};
 
   Displayers.Presenter = (function() {
 
     function Presenter(o) {
+      this.templatize = __bind(this.templatize, this);
       var k, v;
       for (k in o) {
         v = o[k];
         this[k] = v;
       }
     }
+
+    Presenter.prototype.templatize = function(key, data) {
+      return _.template(this.templates[key].html(), data);
+    };
 
     return Presenter;
 

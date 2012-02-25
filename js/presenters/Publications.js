@@ -12,11 +12,11 @@
     }
 
     Publications.prototype.render = function() {
-      $(this.el).append(_.template(this.templates["header-template"].html(), {
+      $(this.el).append(this.templatize("header-template", {
         "imObj": this.imObj,
         "displayerName": this.displayerName
       }));
-      return $(this.el).append(_.template(this.templates["table-template"].html(), {
+      return $(this.el).append(this.templatize("table-template", {
         "data": this.data
       }));
     };

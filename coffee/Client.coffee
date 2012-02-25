@@ -1,10 +1,13 @@
 # Global space.
-window.Displayers = (window.Displayers and console.log "give me my var back!") or {}
+window.Displayers = (window.Displayers and console.log "things may go #@!") or {}
 
-# Just a prototype for expanding options on us.
 class Displayers.Presenter
 
+    # Expand options on us.
     constructor: (o) -> @[k] = v for k, v of o
+
+    # Helper for templating.
+    templatize: (key, data) => _.template(@templates[key].html(), data)
 
 
 # Store callbacks here.
