@@ -20,7 +20,9 @@
         </td>
         <td><%= row.year %></td>
         <td><%= row.journal %></td>
-        <td><%= row.title %></td>
+        <td>
+          <a href="http://www.ncbi.nlm.nih.gov/pubmed/<%= row.pubMedId %>" target="_new"><%= row.title %></a>
+        </td>
       </tr>
     <% end %>
   </tbody>

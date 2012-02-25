@@ -123,7 +123,8 @@ class Displayers.Client
 
         # Grab the data.
         @resources.getData(cb,
-            select: [ "publications.title", "publications.year", "publications.journal", "publications.authors.name" ]
+            select: [ "publications.title", "publications.year", "publications.journal", "publications.pubMedId",
+                "publications.authors.name" ]
             from: "Gene"
             where:
                 "ncbiGeneNumber":
