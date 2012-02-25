@@ -1,12 +1,20 @@
 # Returned object.
 class Presenter
     
-    constructor: (@o) ->
-        # Title.
-        o.el.append( $('<h3/>', {"text": "#{o.imObj} #{o.displayerName} displayer"}) )
+    # Expand options on us.
+    constructor: (o) -> @[k] = v for k, v of o
 
-        # Render table.
-        o.el.append( _.template( o.templates["table-template"].html(), { data: o.data } ) )
+    render: =>
+        # The header.
+        $(@el).append _.template(@templates["header-template"].html(),
+            "imObj": @imObj
+            "displayerName": @displayerName
+        )
+
+        # The table.
+        $(@el).append _.template(@templates["table-template"].html(),
+            "data": @data
+        )
 
 # Save on a callback and trigger us being ready.
 window.Callbacks.call("g5VekAcU", Presenter)

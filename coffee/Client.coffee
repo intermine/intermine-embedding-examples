@@ -62,16 +62,18 @@ class DisplayerClient
         window.Callbacks.me("g5VekAcU", @render)
 
     # Is called with a loaded object.
-    render: (Presenter) => new Presenter(
-        "imObj":         @imObj
-        "displayerName": @displayerName
-        "el":            @el
-        "data":          @data
-        "templates":     @templates
-    )
+    render: (Presenter) =>
+        p = new Presenter(
+            "imObj":         @imObj
+            "displayerName": @displayerName
+            "el":            @el
+            "data":          @data
+            "templates":     @templates
+        )
+        p.render()
 
 
 $ ->
     client = new DisplayerClient()
     # Ask for a pparg publications displayer and dump to output into a div.
-    client.load("PPARG", "Publications", $("#displayer"))
+    client.load("PPARG", "Publications", "#displayer")

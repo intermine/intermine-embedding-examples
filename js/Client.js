@@ -83,13 +83,15 @@
     };
 
     DisplayerClient.prototype.render = function(Presenter) {
-      return new Presenter({
+      var p;
+      p = new Presenter({
         "imObj": this.imObj,
         "displayerName": this.displayerName,
         "el": this.el,
         "data": this.data,
         "templates": this.templates
       });
+      return p.render();
     };
 
     return DisplayerClient;
@@ -99,7 +101,7 @@
   $(function() {
     var client;
     client = new DisplayerClient();
-    return client.load("PPARG", "Publications", $("#displayer"));
+    return client.load("PPARG", "Publications", "#displayer");
   });
 
 }).call(this);

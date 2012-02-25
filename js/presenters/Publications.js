@@ -1,17 +1,27 @@
 (function() {
   var Presenter;
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   Presenter = (function() {
 
     function Presenter(o) {
-      this.o = o;
-      o.el.append($('<h3/>', {
-        "text": "" + o.imObj + " " + o.displayerName + " displayer"
-      }));
-      o.el.append(_.template(o.templates["table-template"].html(), {
-        data: o.data
-      }));
+      this.render = __bind(this.render, this);
+      var k, v;
+      for (k in o) {
+        v = o[k];
+        this[k] = v;
+      }
     }
+
+    Presenter.prototype.render = function() {
+      $(this.el).append(_.template(this.templates["header-template"].html(), {
+        "imObj": this.imObj,
+        "displayerName": this.displayerName
+      }));
+      return $(this.el).append(_.template(this.templates["table-template"].html(), {
+        "data": this.data
+      }));
+    };
 
     return Presenter;
 
