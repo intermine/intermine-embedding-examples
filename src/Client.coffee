@@ -1,3 +1,15 @@
+# ----------- cached getScript()
+
+$.getResource = (url, options) ->
+    options = $.extend(options or {},
+        dataType: "script"
+        cache:    true
+        url:      url
+    )
+    $.ajax options
+
+# ----------- the client
+
 # Global space.
 window.Displayers = (window.Displayers and console.log "things may go #@!") or {}
 
@@ -72,12 +84,12 @@ class Displayers.Resources
             return @loaded(cb, "template") if not "./#{prefix}/#{path}".indexOf(k)
         
         # Business as usual.
-        $.getScript "js/templates/#{prefix}/#{path}", =>
+        $.getResource("js/templates/#{prefix}/#{path}").done =>
             @loaded(cb, "template")
 
     # Use getScript() and call us from the script.
     getPresenter: (cb, prefix, path) ->
-        $.getScript "js/presenters/#{prefix}/#{path}"
+        $.getResource "js/presenters/#{prefix}/#{path}"
 
     # Use imjs.
     getData: (cb, query) =>
