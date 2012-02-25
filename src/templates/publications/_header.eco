@@ -1,0 +1,2 @@
+  <h3><%= @imObj %> <%= @displayerName %> displayer</h3>
+  <p><span class="label">I display dummy data.</span></p>

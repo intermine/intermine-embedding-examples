@@ -17,13 +17,13 @@ class Backboned extends Backbone.View
 
     render: ->
         # The header.
-        $(@el).append _.template(@templates["header-template"].html(),
+        $(@el).append @templates["_header"]?(
             "imObj": @imObj
             "displayerName": @displayerName
         )
 
         # The table.
-        $(@el).append _.template(@templates["table-template"].html(), {"data": @model.toJSON()})
+        $(@el).append @templates["_table"]?("data": @model.toJSON())
 
 # Save on a callback and trigger us being ready (rendered by the server with our callback key).
 Displayers.Callbacks.call("xEnEYa35", Backboned)

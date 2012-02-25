@@ -5,9 +5,6 @@ class Displayers.Presenter
 
     constructor: (o) -> @[k] = v for k, v of o
 
-    # Helper for templating.
-    templatize: (key, data) => _.template(@templates[key].html(), data)
-
 
 # Store callbacks here.
 class Displayers.Callbacks
@@ -36,27 +33,13 @@ class Displayers.Client
         # The server in its infinite wisdom gives us this config.
         config =
             "Publications":
-                templates: "_publications.html"
+                templates: "./publications/"
                 presenter: "Publications.js"
                 callback:  "g5VekAcU"
             "backbone.js Publications":
-                templates: "_publications.html"
+                templates: "./publications/"
                 presenter: "Publications.backboned.js"
                 callback:  "xEnEYa35"
-
-        # Get the templates.
-        templates = do ->
-            result = ""
-            $.ajax
-                async: false
-                url: "js/templates/#{config[options.displayerName].templates}"
-                success: (data) -> result = data
-            result
-
-        # Process them better.
-        for template in $(templates)
-            o = $(template)[0]
-            options.templates[$(o).attr("id")] = $(o) if o.tagName is "SCRIPT"
 
         # 'Fetch' the data.
         options.data = [
@@ -76,7 +59,13 @@ class Displayers.Client
                 year: 2011
         ]
 
-        # Append a new script.
+        # Grab the templates.
+        for k, v of window.eco
+            d = config[options.displayerName].templates
+            if not k.indexOf(d)
+                options.templates[k.substr(d.length)] = v
+
+        # Append a new presenter script.
         script = document.createElement("script")
         script.type = "text/javascript"
         script.language = "javascript"
