@@ -30,6 +30,8 @@ class Displayers.Resources
             switch type
                 # Presenter.
                 when "presenter" then resource["object"] = object
+                # JSON data
+                when "data" then resource.options.data = object
                 # eco templates.
                 when "template"
                     for k, v of window.eco # This is where the object is.
@@ -39,6 +41,7 @@ class Displayers.Resources
 
             # If no more, then just call the callback.
             if not resource.count then resource.callback(resource["object"], resource["options"])
+            
             # Save it for the future.
             else @store[key] = resource
         else
@@ -73,37 +76,25 @@ class Displayers.Client
             "data": {}
         console.log "loading #{options.displayerName} in #{options.el}"
 
-        # Set up 3 resources on the callback (1x presenter, 2x template).
-        @resources.set(config[displayerName].callback, config[displayerName].prefix, 3, options, @render)
+        cb = config[displayerName].callback
+        prefix = config[options.displayerName].prefix
 
-        # 'Fetch' the data.
-        options.data = [
-                title: "An age-dependent diet-modified effect of the PPARγ Pro12Ala polymorphism in children."
-                authors: "Dedoussis GV"
-                journal: "Metabolism"
-                year: 2011
-            ,
-                title: "Peroxisome proliferator-activated receptor-gamma (PPAR-γ) expression is downreg..."
-                authors: "Yamamoto-Furusho JK"
-                journal: "Inflamm Bowel Dis"
-                year: 2011
-            ,
-                title: "Gender differences in the effects of peroxisome proliferator-activated receptor ..."
-                authors: "Chen CH"
-                journal: "Prog Neuropsychopharmacol Biol Psychiatry"
-                year: 2011
-        ]
+        # Set up 3 resources on the callback (1x presenter, 2x templates, 1x payload).
+        @resources.set(cb, config[displayerName].prefix, 4, options, @render)
+
+        # Grab the data.
+        $.getJSON "js/data/#{prefix}.json", (json) => @resources.loaded(cb, "data", json)
 
         # Grab templates, they go globally so we can use getScript and not pass anything to callback.
         for path in config[options.displayerName].templates
-            $.getScript("js/templates/#{config[options.displayerName].prefix}/#{path}", =>
-                @resources.loaded(config[options.displayerName].callback, "template"))
+            $.getScript "js/templates/#{prefix}/#{path}", =>
+                @resources.loaded(cb, "template")
 
         # Append a new presenter script.
         script = document.createElement("script")
         script.type = "text/javascript"
         script.language = "javascript"
-        script.src = "js/presenters/#{config[options.displayerName].prefix}/#{config[options.displayerName].presenter}"
+        script.src = "js/presenters/#{prefix}/#{config[options.displayerName].presenter}"
         head = document.getElementsByTagName("head")[0]
         head.appendChild(script)
 
