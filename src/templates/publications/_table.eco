@@ -12,7 +12,11 @@
     <% for row in @data: %>
       <tr>
         <td></td>
-        <td><%= row.authors %></td>
+        <td>
+          <% for author in row.authors: %>
+            <%= author.name %>
+          <% end %>
+        </td>
         <td><%= row.year %></td>
         <td><%= row.journal %></td>
         <td><%= row.title %></td>

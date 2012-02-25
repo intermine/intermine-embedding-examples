@@ -50,7 +50,9 @@ class Displayers.Resources
 
 class Displayers.Client
     
-    constructor: -> @resources = Displayers.Resources = new Displayers.Resources()
+    constructor: ->
+        @resources = Displayers.Resources = new Displayers.Resources()
+        @service = new intermine.Service(root: "www.flymine.org/query")
 
     # Render displayer.
     load: (imObj, displayerName, el) =>
@@ -83,7 +85,16 @@ class Displayers.Client
         @resources.set(cb, config[displayerName].prefix, 4, options, @render)
 
         # Grab the data.
-        $.getJSON "js/data/#{prefix}.json", (json) => @resources.loaded(cb, "data", json)
+        @service.query
+            select: [ "publications.title", "publications.year", "publications.journal", "publications.authors.name" ]
+            from: "Gene"
+            where:
+                "ncbiGeneNumber":
+                    "=": 34430 # TfIIB
+            limit: 10
+        , (q) =>
+            q.records (json) =>
+                @resources.loaded(cb, "data", json[0].publications)
 
         # Grab templates, they go globally so we can use getScript and not pass anything to callback.
         for path in config[options.displayerName].templates
@@ -106,7 +117,7 @@ class Displayers.Client
 
 $ ->
     client = new Displayers.Client()
-    # Ask for a pparg publications displayer and dump to output into a div.
-    client.load("PPARG", "Publications", "#displayer")
-    # Ask for a pparg publications displayer and dump to output into a div (backboned).
-    client.load("PPARG", "backbone.js Publications", "#backbone")
+    # Ask for a TfIIB publications displayer and dump to output into a div.
+    client.load("TfIIB", "Publications", "#displayer")
+    # Ask for a TfIIB publications displayer and dump to output into a div (backboned).
+    client.load("TfIIB", "backbone.js Publications", "#backbone")
