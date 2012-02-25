@@ -21,7 +21,7 @@ class Displayers.Callbacks
             "callback": callback
 
     # I am calling now.
-    call: (key, object) => if @store[key] then @store[key].callback(object, @store[key].options)
+    call: (key, object) => @store[key]?.callback(object, @store[key].options)
 
 
 class Displayers.Client

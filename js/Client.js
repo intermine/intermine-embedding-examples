@@ -39,9 +39,8 @@
     };
 
     Callbacks.prototype.call = function(key, object) {
-      if (this.store[key]) {
-        return this.store[key].callback(object, this.store[key].options);
-      }
+      var _ref;
+      return (_ref = this.store[key]) != null ? _ref.callback(object, this.store[key].options) : void 0;
     };
 
     return Callbacks;
