@@ -9,9 +9,14 @@ class Displayers.Presenter
 # Store callbacks here.
 class Displayers.Resources
 
+    # Callbacks storage.
     store: {}
 
+    # imjs Service.
     service: new intermine.Service(root: "www.flymine.org/query")
+
+    # Where is eco?
+    eco: -> window.eco
 
     # ----------- callbacks
 
@@ -45,7 +50,7 @@ class Displayers.Resources
                 when "data" then resource.options.data = object
                 # eco templates.
                 when "template"
-                    for k, v of window.eco # This is where the object is.
+                    for k, v of @eco()
                         p = "./#{resource.prefix}/" # Would be nice to get rid of leading './'
                         if not k.indexOf(p) # Our prefix.
                             resource.options.templates[k.substr(p.length)] = v # Save the template f().
@@ -60,23 +65,21 @@ class Displayers.Resources
 
     # ----------- dynamic loading
 
+    # Use getScript() and templates are on a window object.
     getTemplate: (cb, prefix, path) =>
         # Maybe the template exists already and we can ring the bell immediately?
-        for k, v of window.eco # This is where the object is.
+        for k, v of @eco()
             return @loaded(cb, "template") if not "./#{prefix}/#{path}".indexOf(k)
         
         # Business as usual.
         $.getScript "js/templates/#{prefix}/#{path}", =>
             @loaded(cb, "template")
 
-    getPresenter: (cb, prefix, path) =>
-        script = document.createElement("script")
-        script.type = "text/javascript"
-        script.language = "javascript"
-        script.src = "js/presenters/#{prefix}/#{path}"
-        head = document.getElementsByTagName("head")[0]
-        head.appendChild(script)
+    # Use getScript() and call us from the script.
+    getPresenter: (cb, prefix, path) ->
+        $.getScript "js/presenters/#{prefix}/#{path}"
 
+    # Use imjs.
     getData: (cb, query) =>
         @service.query(query
         , (q) =>
