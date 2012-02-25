@@ -1,8 +1,23 @@
 (function() {
-  var Callbacks, DisplayerClient;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-  Callbacks = (function() {
+  window.Displayers = (window.Displayers && console.log("give me my var back!")) || {};
+
+  Displayers.Presenter = (function() {
+
+    function Presenter(o) {
+      var k, v;
+      for (k in o) {
+        v = o[k];
+        this[k] = v;
+      }
+    }
+
+    return Presenter;
+
+  })();
+
+  Displayers.Callbacks = (function() {
 
     function Callbacks() {
       this.call = __bind(this.call, this);
@@ -24,14 +39,14 @@
 
   })();
 
-  DisplayerClient = (function() {
+  Displayers.Client = (function() {
 
-    function DisplayerClient() {
+    function Client() {
       this.render = __bind(this.render, this);
-      this.load = __bind(this.load, this);      window.Callbacks = new Callbacks();
+      this.load = __bind(this.load, this);      Displayers.Callbacks = new Displayers.Callbacks();
     }
 
-    DisplayerClient.prototype.load = function(imObj, displayerName, el) {
+    Client.prototype.load = function(imObj, displayerName, el) {
       var head, o, script, template, templates, _i, _len, _ref;
       this.imObj = imObj;
       this.displayerName = displayerName;
@@ -79,12 +94,12 @@
       script.src = "js/presenters/Publications.js";
       head = document.getElementsByTagName("head")[0];
       head.appendChild(script);
-      return window.Callbacks.me("g5VekAcU", this.render);
+      return Displayers.Callbacks.me("g5VekAcU", this.render);
     };
 
-    DisplayerClient.prototype.render = function(Presenter) {
+    Client.prototype.render = function(Clazz) {
       var p;
-      p = new Presenter({
+      p = new Clazz({
         "imObj": this.imObj,
         "displayerName": this.displayerName,
         "el": this.el,
@@ -94,13 +109,13 @@
       return p.render();
     };
 
-    return DisplayerClient;
+    return Client;
 
   })();
 
   $(function() {
     var client;
-    client = new DisplayerClient();
+    client = new Displayers.Client();
     return client.load("PPARG", "Publications", "#displayer");
   });
 

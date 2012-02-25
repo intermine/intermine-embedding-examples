@@ -1,19 +1,17 @@
 (function() {
-  var Presenter;
-  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  var Publications;
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; }, __hasProp = Object.prototype.hasOwnProperty, __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  Presenter = (function() {
+  Publications = (function() {
 
-    function Presenter(o) {
+    __extends(Publications, Displayers.Presenter);
+
+    function Publications() {
       this.render = __bind(this.render, this);
-      var k, v;
-      for (k in o) {
-        v = o[k];
-        this[k] = v;
-      }
+      Publications.__super__.constructor.apply(this, arguments);
     }
 
-    Presenter.prototype.render = function() {
+    Publications.prototype.render = function() {
       $(this.el).append(_.template(this.templates["header-template"].html(), {
         "imObj": this.imObj,
         "displayerName": this.displayerName
@@ -23,10 +21,10 @@
       }));
     };
 
-    return Presenter;
+    return Publications;
 
   })();
 
-  window.Callbacks.call("g5VekAcU", Presenter);
+  Displayers.Callbacks.call("g5VekAcU", Publications);
 
 }).call(this);

@@ -1,5 +1,14 @@
+# Global space.
+window.Displayers = (window.Displayers and console.log "give me my var back!") or {}
+
+# Just a prototype for expanding options on us.
+class Displayers.Presenter
+
+    constructor: (o) -> @[k] = v for k, v of o
+
+
 # Store callbacks here.
-class Callbacks
+class Displayers.Callbacks
 
     store: {}
 
@@ -10,11 +19,10 @@ class Callbacks
     call: (key, object) => @store[key]?(object)
 
 
-class DisplayerClient
-
-    # Init new storage.
-    constructor: -> window.Callbacks = new Callbacks()
+class Displayers.Client
     
+    constructor: -> Displayers.Callbacks = new Displayers.Callbacks()
+
     # Render displayer.
     load: (@imObj, @displayerName, @el) =>
         # Get the templates.
@@ -59,11 +67,11 @@ class DisplayerClient
         head.appendChild(script)
 
         # When you are loaded, call me...
-        window.Callbacks.me("g5VekAcU", @render)
+        Displayers.Callbacks.me("g5VekAcU", @render)
 
     # Is called with a loaded object.
-    render: (Presenter) =>
-        p = new Presenter(
+    render: (Clazz) =>
+        p = new Clazz(
             "imObj":         @imObj
             "displayerName": @displayerName
             "el":            @el
@@ -74,6 +82,6 @@ class DisplayerClient
 
 
 $ ->
-    client = new DisplayerClient()
+    client = new Displayers.Client()
     # Ask for a pparg publications displayer and dump to output into a div.
     client.load("PPARG", "Publications", "#displayer")

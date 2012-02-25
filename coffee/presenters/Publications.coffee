@@ -1,8 +1,5 @@
 # Returned object.
-class Presenter
-    
-    # Expand options on us.
-    constructor: (o) -> @[k] = v for k, v of o
+class Publications extends Displayers.Presenter
 
     render: =>
         # The header.
@@ -17,4 +14,4 @@ class Presenter
         )
 
 # Save on a callback and trigger us being ready.
-window.Callbacks.call("g5VekAcU", Presenter)
+Displayers.Callbacks.call("g5VekAcU", Publications)
