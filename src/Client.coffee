@@ -13,6 +13,8 @@ class Displayers.Resources
 
     service: new intermine.Service(root: "www.flymine.org/query")
 
+    # ----------- callbacks
+
     # Save my number and call me.
     set: (key, prefix, count, options, callback) =>
         @store[key] =
@@ -52,6 +54,11 @@ class Displayers.Resources
     # ----------- dynamic loading
 
     getTemplate: (cb, prefix, path) =>
+        # Maybe the template exists already and we can ring the bell immediately?
+        for k, v of window.eco # This is where the object is.
+            return @loaded(cb, "template") if not "./#{prefix}/#{path}".indexOf(k)
+        
+        # Business as usual.
         $.getScript "js/templates/#{prefix}/#{path}", =>
             @loaded(cb, "template")
 
