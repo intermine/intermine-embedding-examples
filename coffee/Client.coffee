@@ -33,7 +33,7 @@ class Displayers.Client
         options = { "imObj": imObj, "displayerName": displayerName, "el": el, "templates": {}, "data": {} }
         console.log "loading #{options.displayerName} in #{options.el}"
 
-        # The server in its infinite wisdome gives is this config.
+        # The server in its infinite wisdom gives us this config.
         config =
             "Publications":
                 templates: "_publications.html"
