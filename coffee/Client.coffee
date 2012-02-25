@@ -3,7 +3,6 @@ window.Displayers = (window.Displayers and console.log "things may go #@!") or {
 
 class Displayers.Presenter
 
-    # Expand options on us.
     constructor: (o) -> @[k] = v for k, v of o
 
     # Helper for templating.
@@ -16,10 +15,13 @@ class Displayers.Callbacks
     store: {}
 
     # Save my number and call me.
-    me: (key, callback) => @store[key] = callback
+    me: (key, options, callback) =>
+        @store[key] =
+            "options":  options
+            "callback": callback
 
     # I am calling now.
-    call: (key, object) => @store[key]?(object)
+    call: (key, object) => if @store[key] then @store[key].callback(object, @store[key].options)
 
 
 class Displayers.Client
@@ -27,24 +29,37 @@ class Displayers.Client
     constructor: -> Displayers.Callbacks = new Displayers.Callbacks()
 
     # Render displayer.
-    load: (@imObj, @displayerName, @el) =>
+    load: (imObj, displayerName, el) =>
+        options = { "imObj": imObj, "displayerName": displayerName, "el": el, "templates": {}, "data": {} }
+        console.log "loading #{options.displayerName} in #{options.el}"
+
+        # The server in its infinite wisdome gives is this config.
+        config =
+            "Publications":
+                templates: "_publications.html"
+                presenter: "Publications.js"
+                callback:  "g5VekAcU"
+            "backbone.js Publications":
+                templates: "_publications.html"
+                presenter: "Publications.backboned.js"
+                callback:  "xEnEYa35"
+
         # Get the templates.
         templates = do ->
             result = ""
             $.ajax
                 async: false
-                url: "js/templates/_publications.html"
+                url: "js/templates/#{config[options.displayerName].templates}"
                 success: (data) -> result = data
             result
 
         # Process them better.
-        @templates = {}
         for template in $(templates)
             o = $(template)[0]
-            @templates[$(o).attr("id")] = $(o) if o.tagName is "SCRIPT"
+            options.templates[$(o).attr("id")] = $(o) if o.tagName is "SCRIPT"
 
         # 'Fetch' the data.
-        @data = [
+        options.data = [
                 title: "An age-dependent diet-modified effect of the PPARγ Pro12Ala polymorphism in children."
                 authors: "Dedoussis GV"
                 journal: "Metabolism"
@@ -65,22 +80,16 @@ class Displayers.Client
         script = document.createElement("script")
         script.type = "text/javascript"
         script.language = "javascript"
-        script.src = "js/presenters/Publications.js"
+        script.src = "js/presenters/#{config[options.displayerName].presenter}"
         head = document.getElementsByTagName("head")[0]
         head.appendChild(script)
 
         # When you are loaded, call me...
-        Displayers.Callbacks.me("g5VekAcU", @render)
+        Displayers.Callbacks.me(config[displayerName].callback, options, @render)
 
     # Is called with a loaded object.
-    render: (Clazz) =>
-        p = new Clazz(
-            "imObj":         @imObj
-            "displayerName": @displayerName
-            "el":            @el
-            "data":          @data
-            "templates":     @templates
-        )
+    render: (Clazz, options) =>
+        p = new Clazz(options)
         p.render()
 
 
@@ -88,3 +97,5 @@ $ ->
     client = new Displayers.Client()
     # Ask for a pparg publications displayer and dump to output into a div.
     client.load("PPARG", "Publications", "#displayer")
+    # Ask for a pparg publications displayer and dump to output into a div (backboned).
+    client.load("PPARG", "backbone.js Publications", "#backbone")

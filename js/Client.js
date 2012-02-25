@@ -31,13 +31,17 @@
 
     Callbacks.prototype.store = {};
 
-    Callbacks.prototype.me = function(key, callback) {
-      return this.store[key] = callback;
+    Callbacks.prototype.me = function(key, options, callback) {
+      return this.store[key] = {
+        "options": options,
+        "callback": callback
+      };
     };
 
     Callbacks.prototype.call = function(key, object) {
-      var _base;
-      return typeof (_base = this.store)[key] === "function" ? _base[key](object) : void 0;
+      if (this.store[key]) {
+        return this.store[key].callback(object, this.store[key].options);
+      }
     };
 
     return Callbacks;
@@ -52,30 +56,46 @@
     }
 
     Client.prototype.load = function(imObj, displayerName, el) {
-      var head, o, script, template, templates, _i, _len, _ref;
-      this.imObj = imObj;
-      this.displayerName = displayerName;
-      this.el = el;
+      var config, head, o, options, script, template, templates, _i, _len, _ref;
+      options = {
+        "imObj": imObj,
+        "displayerName": displayerName,
+        "el": el,
+        "templates": {},
+        "data": {}
+      };
+      console.log("loading " + options.displayerName + " in " + options.el);
+      config = {
+        "Publications": {
+          templates: "_publications.html",
+          presenter: "Publications.js",
+          callback: "g5VekAcU"
+        },
+        "backbone.js Publications": {
+          templates: "_publications.html",
+          presenter: "Publications.backboned.js",
+          callback: "xEnEYa35"
+        }
+      };
       templates = (function() {
         var result;
         result = "";
         $.ajax({
           async: false,
-          url: "js/templates/_publications.html",
+          url: "js/templates/" + config[options.displayerName].templates,
           success: function(data) {
             return result = data;
           }
         });
         return result;
       })();
-      this.templates = {};
       _ref = $(templates);
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         template = _ref[_i];
         o = $(template)[0];
-        if (o.tagName === "SCRIPT") this.templates[$(o).attr("id")] = $(o);
+        if (o.tagName === "SCRIPT") options.templates[$(o).attr("id")] = $(o);
       }
-      this.data = [
+      options.data = [
         {
           title: "An age-dependent diet-modified effect of the PPARγ Pro12Ala polymorphism in children.",
           authors: "Dedoussis GV",
@@ -96,21 +116,15 @@
       script = document.createElement("script");
       script.type = "text/javascript";
       script.language = "javascript";
-      script.src = "js/presenters/Publications.js";
+      script.src = "js/presenters/" + config[options.displayerName].presenter;
       head = document.getElementsByTagName("head")[0];
       head.appendChild(script);
-      return Displayers.Callbacks.me("g5VekAcU", this.render);
+      return Displayers.Callbacks.me(config[displayerName].callback, options, this.render);
     };
 
-    Client.prototype.render = function(Clazz) {
+    Client.prototype.render = function(Clazz, options) {
       var p;
-      p = new Clazz({
-        "imObj": this.imObj,
-        "displayerName": this.displayerName,
-        "el": this.el,
-        "data": this.data,
-        "templates": this.templates
-      });
+      p = new Clazz(options);
       return p.render();
     };
 
@@ -121,7 +135,8 @@
   $(function() {
     var client;
     client = new Displayers.Client();
-    return client.load("PPARG", "Publications", "#displayer");
+    client.load("PPARG", "Publications", "#displayer");
+    return client.load("PPARG", "backbone.js Publications", "#backbone");
   });
 
 }).call(this);
