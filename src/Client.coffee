@@ -79,7 +79,7 @@ class Displayers.Client
         cb = config[displayerName].callback
         prefix = config[options.displayerName].prefix
 
-        # Set up 3 resources on the callback (1x presenter, 2x templates, 1x payload).
+        # Set up 4 resources on the callback (1x presenter, 2x templates, 1x payload).
         @resources.set(cb, config[displayerName].prefix, 4, options, @render)
 
         # Grab the data.
