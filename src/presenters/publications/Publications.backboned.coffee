@@ -40,7 +40,7 @@ class Backboned extends Backbone.View
 
     render: ->
         # The table.
-        $(@el).find(".table").html @templates["_table"]?("data": @pages[@page].toJSON())
+        $(@el).find(".table").html @templates["_table"]?({ "data": @pages[@page].toJSON(), "page": @page })
 
         # The paginator.
         $(@el).find(".btn-group").html @templates["_paginator"]?({ "pages": @pages.length - 1, "current": @page })

@@ -9,10 +9,10 @@
     </tr>
   </thead>
   <tbody>
-    <% i = 0 %>
+    <% @page = (@page ?= 0) * 3 %>
     <% for row in @data: %>
       <tr>
-        <td><%= i += 1 %></td>
+        <td><%= @page += 1 %></td>
         <td>
           <% for author in row.authors: %>
             <%= author.name %>
