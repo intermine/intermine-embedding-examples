@@ -73,6 +73,7 @@ class Displayers.Resources
     getData: (cb, query) =>
         @service.query(query
         , (q) =>
+            console.log q.toXML()
             q.records (json) =>
                 @loaded(cb, "data", json)
         )
@@ -120,6 +121,7 @@ class Displayers.Client
             where:
                 "ncbiGeneNumber":
                     "=": 34430 # TfIIB
+            joins: [ "publications.authors" ]
             limit: 10
         )
 
