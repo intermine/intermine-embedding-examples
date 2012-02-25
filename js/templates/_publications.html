@@ -1,0 +1,25 @@
+<script type="text/template" id="table-template">
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Authors</th>
+        <th>Year</th>
+        <th>Journal</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (var i = 0; i < data.length; i++) { %>
+        <% var row = data[i]; %>
+        <tr>
+          <td><%= i + 1 %></td>
+          <td><%= row.authors %></td>
+          <td><%= row.year %></td>
+          <td><%= row.journal %></td>
+          <td><%= row.title %></td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</script>
