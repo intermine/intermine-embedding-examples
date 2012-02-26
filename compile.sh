@@ -9,3 +9,7 @@ find . -type f -not \( -iname "*.coffee" \) -exec cp -rf {} ../js/{} \;
 cd ../js/templates
 # template_namespace window.JST for all compiled templates
 find . -type f \( -iname '*.eco' \) -exec eco {} -o . -i "JST" \; -exec rm -rf {} \;
+# uglify-js on templates
+if type uglifyjs &> /dev/null ; then
+    find . -type f \( -iname '*.js' \) -exec uglifyjs -o {} {} \;
+fi
