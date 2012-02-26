@@ -7,4 +7,5 @@ find . -type d -exec mkdir -p ../js/{} \;
 find . -type f -not \( -iname "*.coffee" \) -exec cp -rf {} ../js/{} \;
 # compile eco templates and remove them
 cd ../js/templates
-find . -type f \( -iname '*.eco' \) -exec eco {} -o . -i "eco" \; -exec rm -rf {} \;
+# template_namespace window.JST for all compiled templates
+find . -type f \( -iname '*.eco' \) -exec eco {} -o . -i "JST" \; -exec rm -rf {} \;

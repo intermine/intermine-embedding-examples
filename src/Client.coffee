@@ -28,7 +28,7 @@ class Displayers.Resources
     service: new intermine.Service(root: "www.flymine.org/query")
 
     # Where is eco?
-    eco: -> window.eco
+    eco: -> window.JST
 
     # ----------- callbacks
 
