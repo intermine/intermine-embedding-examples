@@ -9,7 +9,7 @@ Service Client for embedding InterMine Displayers that does not make you have a 
 - [flymine.org/query/service](http://www.flymine.org/query) should be up!
 
 ## Usage:
-1. <code>./compile.sh</code>
+1. <code>./compile.sh</code> (or <code>./compile.sh -d</code> to continuously check for changes)
     1. .coffee files get compiled
     1. directory structure is recreated
     1. any other files are copied over
