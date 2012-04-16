@@ -4,7 +4,6 @@ Example of embedding InterMine Widgets on RatMine Diabetes Portal page
 See `index.html` and edit:
 
 ```javascript
-<script type="text/javascript">
 (function() {
     /* InterMine root URL. */
     var mine = "http://aragorn:8080/flymine";
@@ -18,7 +17,6 @@ See `index.html` and edit:
     /* Give us Protein Domain Enrichment Widget. */
     widgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#protein-domain-widget');
 })();
-</script>
 ```
 
 ## Example:
