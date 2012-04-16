@@ -7,7 +7,28 @@
     <link rel="stylesheet" type="text/css" href="./css/rgd_styles.css" />
 
     <style>
-      .widget { margin:20px; }
+        .widget,
+        .widget a,
+        .widget h3,
+        .widget p,
+        .widget select,
+        .widget th,
+        .widget td,
+        .widget td a { font-size:11px; text-align:left; }
+        .widget { margin:20px; width:460px; }
+        .widget h3 { color:#000; margin:0; }
+        .widget div.wrapper { border:0; width:auto; }
+        .widget table { border-collapse:collapse; border-spacing:0; width:100%; } 
+        .widget th { padding:0 8px; }
+        .widget tr:nth-child(odd) td { background:#FAFAE6; }
+        .widget td { font-size:11px; border-top:1px solid #C3C3C3; padding:3px 8px; } 
+        .widget a.btn { background:url('./css/menu_bkgd.gif') repeat-x; border:1px solid #194B74; padding:2px; cursor:pointer; }
+        .widget .popover { background:#FFF; border:1px solid #777; }
+        .widget .popover a.close { float:right; font-size:14px; }
+        .widget .popover h3 { background:#D6E6EE; margin:0 0 4px 0; padding:4px 9px; }
+        .widget .popover h4 { margin:0; }
+        .widget .popover .popover-inner { padding:1px; box-shadow:0 3px 7px rgba(0, 0, 0, 0.3); background:#FFF; margin:0 !important; }
+        .widget .popover .popover-content { padding:9px; }
     </style>
 
     <!-- widgets.js -->
@@ -22,10 +43,10 @@
         var widgets = new Widgets(mine + "/service/");
 
         /* Give us BDGP Expression Patterns Enrichment Widget. */
-        widgets.chart('bdgp', 'demo-genes', '#chart-widget');
+        widgets.enrichment('go_enrichment_for_gene', 'demo-genes', '#go-widget');
 
         /* Give us Protein Domain Enrichment Widget. */
-        widgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#enrichment-widget');
+        widgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#protein-domain-widget');
     })();
     </script>
 </head>
@@ -978,20 +999,22 @@
                                                                                                             <td align="center"
                                                                                                                 valign="top">
                                                                                                                 <div class="widget" id="fake-widget">
+                                                                                                                    <center>
                                                                                                                     <img src="css/flash-widget.png" />
+                                                                                                                    </center>
                                                                                                                 </div>
                                                                                                             </td>
 
                                                                                                             <td align="center"
                                                                                                                 valign="top">
-                                                                                                                <div class="widget" id="chart-widget">
+                                                                                                                <div class="widget" id="go-widget">
 
                                                                                                                 </div>
                                                                                                             </td>
 
                                                                                                             <td align="center"
                                                                                                                 valign="top">
-                                                                                                                <div class="widget" id="enrichment-widget">
+                                                                                                                <div class="widget" id="protein-domain-widget">
 
                                                                                                                 </div>
                                                                                                             </td>
