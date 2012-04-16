@@ -1,0 +1,1 @@
+Example of embedding InterMine Widgets on RatMine Diabetes Portal page
