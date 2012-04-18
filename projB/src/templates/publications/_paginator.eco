@@ -1,0 +1,5 @@
+<div class="paginator btn-group">
+  <% for page in [0..@pages]: %>
+    <a class="btn <%= "active" if page is @current %>"><%= page %></a>
+  <% end %>
+</div>

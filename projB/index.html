@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Displayer Client</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- dependencies -->
+    <script type="text/javascript" src="js/lib/jquery-1.7.js"></script>
+    <script type="text/javascript" src="js/lib/underscore.js"></script>
+    <script type="text/javascript" src="js/lib/backbone.js"></script>
+
+    <!-- imjs lib -->
+    <script type="text/javascript" src="js/lib/imjs/service.js"></script>
+    <script type="text/javascript" src="js/lib/imjs/query.js"></script>
+    <script type="text/javascript" src="js/lib/imjs/model.js"></script>
+    <script type="text/javascript" src="js/lib/imjs/lists.js"></script>
+
+    <!-- this client -->
+    <script type="text/javascript" src="js/Client.js"></script>
+  </head>
+
+  <body>
+    <!-- menu -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+          <a class="brand" href="#">Displayer Client</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li>
+                <div id="progress" class="progress progress-success progress-striped active"
+                  style="width:300px;margin:10px 0 0 0">
+                  <div data-percent="0" class="bar"></div>
+                </div>                
+              </li>
+            </ul>
+            <ul class="nav pull-right">
+              <li class="divider-vertical"></li>
+              <li><a href="https://github.com/radekstepan/intermine-displayer-client">Fork me on GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- displayers -->
+      <div class="row">
+        <div class="span5">
+          <h2>Example Displayer</h2>
+          <p>A Displayer is rendered by combining .js/.json sources. The steps are as follows:</p>
+          <ol>
+            <li>Ask the client library for a displayer for an InterMine object.</li>
+            <li>The library loads the <span class="label label-success">data</span> (JSON),
+              <span class="label label-success">templates</span> (eco), <span class="label label-success">presenter</span>
+              ("how should data be rendered") while providing a callback for when these are returned from the server.</li>
+            <li>Once done, the presenter is initialized with a bunch of options like imObj, displayer name, data payload
+              etc.</li>
+            <li>Compiled <span class="label label-info">CoffeeScript</span> eco templates are just JavaScript functions
+              that can be called with the payload.</li>
+            <li>As presenters are arbitrary objects with functions, any kind of behavior can be encompassed.</li>
+          </ol>
+        </div>
+        <div id="displayer" class="span7"></div>
+      </div>
+      
+      <div class="row">&nbsp;</div>
+      
+      <div class="row">
+        <div class="span2">
+          <h2>backbone.js Displayer</h2>
+          <p>This time, the presenter returned extends <span class="label label-info">Backbone.View</span>.</p>
+          <p>Notice how the <span class="label label-success">data</span> and
+            <span class="label label-success">templates</span> can be used without changes, while eco templates
+            can be cached for future calls.</p>
+        </div>
+        <div id="backbone" class="span10"></div>
+      </div>
+
+    </div>
+  </body>
+</html>
