@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>WormBase: Gene Summary: aap-1 </title>
+    
+    <link type="text/css" href="css/wormbase.css" rel="stylesheet">
+</head>
+<body>
+    <div id="notifications" class="ui-corner-bottom" style="top: 0px; ">
+        <span id="notification-text"></span>
+        <span class="ui-icon ui-icon-close tip-simple br" tip="close"></span>
+    </div>
+    <div id="wrap">
+        <div id="top-system-message" class="system-message" style="height: 0px; display: none; ">
+             Welcome to WormBase 2 - <a target="_blank" href="http://www.wormbase.org/tools/support">need help?</a><span id="fade">(or visit the <a target="_blank" href="http://legacy.wormbase.org/">legacy site</a>)</span><span class="system-message-close" data-id="2">
+            <span class=" ui-icon ui-icon-close"></span>
+            </span>
+        </div>
+        <div class="system-message" style="height: 0px; display: none; ">
+        </div>
+        <div id="header">
+            <form method="post" class="ui-corner-all" id="searchForm" action="" onsubmit="WB.search(); return false;">
+                <div id="searchBody">
+                    <ul id="searchSelect">
+                        <li>
+                        <span class="ui-icon ui-icon-triangle-1-s" style="float:right"></span>
+                        <span class="current-search" style="float:right">for a gene</span>
+                        <ul>
+                            <li value="all" onclick="WB.search_change(&quot;all&quot;,1);"><a>All</a></li>
+                            <li value="antibody" onclick="WB.search_change(&quot;antibody&quot;,1);"><a>Antibody</a></li>
+                            <li value="anatomy_term" onclick="WB.search_change(&quot;anatomy_term&quot;,1);"><a>Anatomy</a></li>
+                            <li value="expr_pattern" onclick="WB.search_change(&quot;expr_pattern&quot;,1);"><a>Expression pattern</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    <input class="text ui-autocomplete-input" id="Search" name="query" type="text" value="search..." autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+                </div>
+                <input class="ui-icon ui-icon-search" type="submit" onclick="WB.search(); return false;" value="">
+            </form>
+            <div id="title">
+                <h1><a href="http://www.wormbase.org/" title="WormBase Home">WormBase</a></h1>
+                <p>
+                     Version: <a href="http://www.wormbase.org/about/wormbase_release_WS230">WS230</a>
+                </p>
+            </div>
+            <div id="nav-bar">
+                <ul class="nav-bar">
+                    <li><a href="http://www.wormbase.org/species" id="section-species" class="selected">
+                    <span class="ui-icon ui-icon-triangle-1-s"></span> Species</a>
+                    <ul class="wb-dropdown">
+                        <li><a href="http://www.wormbase.org/species/all" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>All Species</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/all" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/all/antibody">Antibodies</a></li>
+                            <li><a href="http://www.wormbase.org/species/all/expression_cluster">Expression clusters</a></li>
+                            <li><a href="http://www.wormbase.org/species/all/life_stage">Life stages</a></li>
+                            <li><a href="http://www.wormbase.org/species/all/gene">Genes</a></li>
+                            <li><a href="http://www.wormbase.org/species/all/gene_class">Gene classes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_elegans" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. elegans</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_elegans" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_elegans/antibody">Antibodies</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_elegans/expression_cluster">Expression clusters</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_elegans/life_stage">Life stages</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_elegans/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/a_suum" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>A. suum</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/a_suum" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/b_malayi" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>B. malayi</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/b_malayi" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/b_malayi/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/b_xylophilus" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>B. xylophilus</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/b_xylophilus" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/b_xylophilus/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_angaria" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. angaria</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_angaria" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_brenneri" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. brenneri</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_brenneri" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_brenneri/gene">Genes</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_brenneri/protein">Proteins</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_briggsae" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. briggsae</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_briggsae" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_briggsae/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_japonica" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. japonica</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_japonica" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_japonica/gene">Genes</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_japonica/protein">Proteins</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_remanei" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. remanei</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_remanei" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/c_remanei/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_sp11" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. sp11</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_sp11" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_sp5" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. sp5</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_sp5" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/c_sp9" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>C. sp9</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/c_sp9" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/h_bacteriophora" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>H. bacteriophora</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/h_bacteriophora" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/h_bacteriophora/gene">Genes</a></li>
+                            <li><a href="http://www.wormbase.org/species/h_bacteriophora/protein">Proteins</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/h_contortus" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>H. contortus</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/h_contortus" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/h_contortus/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/m_hapla" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>M. hapla</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/m_hapla" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/m_hapla/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/m_incognita" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>M. incognita</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/m_incognita" class="genomic_location-link" title="">Browse Genome</a></li>
+                            <li><a href="http://www.wormbase.org/species/m_incognita/gene">Genes</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/p_pacificus" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>P. pacificus</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/p_pacificus" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                        <li><a href="http://www.wormbase.org/species/t_spiralis" class="species"><span class="ui-icon ui-icon-triangle-1-e"></span>T. spiralis</a>
+                        <ul class="wb-dropdown">
+                            <li><a href="http://www.wormbase.org/tools/genome/gbrowse/t_spiralis" class="genomic_location-link" title="">Browse Genome</a></li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    <li><a href="http://www.wormbase.org/resources" id="section-resources" class="">
+                    <span class="ui-icon ui-icon-triangle-1-s"></span> Resources</a>
+                    <ul class="wb-dropdown">
+                        <li><a href="http://www.wormbase.org/resources/analysis"> Analyses</a></li>
+                        <li><a href="http://www.wormbase.org/resources/disease"> Diseases</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="http://www.wormbase.org/tools" id="section-tools" class="">
+                    <span class="ui-icon ui-icon-triangle-1-s"></span> Tools</a>
+                    <ul class="wb-dropdown">
+                        <li><a href="http://www.wormbase.org/tools/blast_blat"> Blast/Blat</a></li>
+                        <li><a href="http://www.wormbase.org/tools/comments"> Comments</a></li>
+                        <li><a href="http://www.wormbase.org/tools/epcr"> e-PCR</a></li>
+                    </ul>
+                    </li>
+                    <span class="status-bar">
+                    <li><a href="http://www.wormbase.org/me" title="go to your workspace" id="section-me" class="">My WormBase <span href="/me" id="bench-status"> (0) </span></a></li>
+                    <li id="login-box"><a id="login">Login</a>
+                    <ul class="wb-dropdown ui-corner-all login-form">
+                        <!-- Login form -->
+                        <div id="login-form">
+                            <form method="post" align="left" action="https://www.wormbase.org/auth/login" style="float:left;">
+                                <div class="login-holder">
+                                    <span id="fade" class="holder">email</span>
+                                    <input class="email" type="email" name="email" size="28">
+                                </div>
+                                <div class="login-holder">
+                                    <span id="fade" class="holder">password</span>
+                                    <input class="password" type="password" name="password" size="19">
+                                    <input type="submit" onclick="var form = $jq(this).closest(&quot;#login-form&quot;); return WB.validate_fields(form.find(&quot;input.email&quot;), null, form.find(&quot;input.password&quot;) );" value="Login" id="login">
+                                </div>
+                                <div class="login-holder">
+                                    <input type="checkbox" id="remember" name="remember" size="10"><span id="fade"> Remember me · </span>
+                                    <span id="fade"><a href="http://www.wormbase.org/register" onclick="$jq(this).closest(&quot;.login-form&quot;).load(&quot;http://www.wormbase.org/register?inline=1&quot;).toggleClass(&quot;registration-form login-form&quot;); return false;">register</a> · </span>
+                                    <a id="fade" href="http://www.wormbase.org/password/index">forgot login?</a>
+                                </div>
+                            </form>
+                            <div class="social">
+                                <div>
+                                    <br>
+                                    ...or sign in with
+                                </div>
+                                <div>
+                                    <button class="social_buttons sb_google sb_24" onclick="WB.openid.signin(&#39;google&#39;);">
+                                    <span>Google</span>
+                                    </button>
+                                    <br style="clear:both">
+                                    <button class="social_buttons sb_facebook sb_24" onclick="WB.openid.signin(&#39;facebook&#39;);">
+                                    <span>Facebook</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                    </li>
+                    </span>
+                </ul>
+            </div>
+        </div>
+        <!-- END boilerplate/banner -->
+        <div id="content">
+            <span class="message"></span>
+            <span class="error"></span>
+            <div id="buttons-nav">
+                <a tip="view comments" class="button section-button tip-simple ui-corner-all" wname="comment"><span class="ui-icon ui-icon-comment"></span></a>
+                <a tip="toggle empty fields" class="button tip-simple ui-corner-all" id="hide-empty-fields" href="javascript:void(0)"><span class="ui-icon ui-icon-carat-2-e-w ui-button"></span></a>
+                <div class="columns" id="column-dropdown">
+                    <a class="button ui-corner-all tip-simple" tip="layout"><span class="ui-icon ui-icon-gear"></span><span class="ui-icon ui-icon-triangle-1-s"></span></a>
+                    <ul>
+                        <li onclick="WB.columns(100, 100)">
+                        <div class="ui-icon-column ui-icon-1">
+                        </div>
+                        </li>
+                        <li onclick="WB.columns(50, 50)" class="multCol">
+                        <div class="ui-icon ui-icon-column ui-icon-1-1">
+                        </div>
+                        <div id="msg">
+                            (too narrow)
+                        </div>
+                        </li>
+                        <li onclick="WB.columns(70, 30)" class="multCol">
+                        <div class="ui-icon ui-icon-column ui-icon-2-1">
+                        </div>
+                        </li>
+                        <li onclick="WB.columns(30, 70)" class="multCol">
+                        <div class="ui-icon ui-icon-column ui-icon-1-2">
+                        </div>
+                        </li>
+                        <div class="list-layouts" data-class="gene" data-section="species">
+                            <li><a id="fade" onclick="WB.openAllWidgets(); return false;">open all</a></li>
+                            <li onclick="location.hash = &#39;/&#39;">
+                            <div id="fade">
+                                close all
+                            </div>
+                            </li>
+                            <li id="layout-default">
+                            <div id="fade" onclick="location.hash =&#39;0-9e-3&#39;">
+                                default
+                            </div>
+                            </li>
+                            <li id="layout-citation">
+                            <div id="fade" onclick="location.hash =&#39;c-i-5&#39;">
+                                citation
+                            </div>
+                            </li>
+                            <form onsubmit="WB.newLayout(this.layout.value);return false;">
+                                <input placeholder="save layout" id="layout-input" type="text" name="layout">
+                            </form>
+                        </div>
+                    </ul>
+                </div>
+                <div style="clear:both">
+                </div>
+            </div>
+            <div id="page-title" class="species-bg">
+                <h2 class="tip-simple star" tip="save">
+                <div class="star-status-WBGene00000001 load-star" href="">
+                    <a class="bench-update" wbid="WBGene00000001" ref="http://www.wormbase.org/rest/workbench" name="aap-1" is_obj="1" save_to="reports" href="http://www.wormbase.org/species/c_elegans/gene/WBGene00000001">
+                    <div id="save" class="ui-icon ui-icon-stars ui-icon-star-gray">
+                    </div>
+                    </a>
+                </div>
+                <span id="breadcrumbs"><span id="breadcrumbs-expand" class="tip-simple ui-icon-large ui-icon-triangle-1-e" tip="expand"></span><span id="breadcrumbs-hide" style="display: inline-block; width: 0px; visibility: hidden; "><a href="http://www.wormbase.org/species/all">Species</a> » <span class="species"><a href="http://www.wormbase.org/species/c_elegans">C. elegans</a></span> » </span><a href="http://www.wormbase.org/species/c_elegans/gene">Gene</a> » <span class="page-title"><span class="locus">aap-1</span></span></span>
+                <div class="tip-elem tip ui-corner-all" style="display: none; ">
+                    <span>save</span><span class="tip-elem ui-icon ui-icon-triangle-1-s"></span>
+                </div>
+                </h2>
+            </div>
+            <div id="widgets">
+                <div class="navigation navigation-min">
+                    <div id="navigation" style="position: relative; top: 0px; ">
+                        <div id="title">
+                            <div class="star-status-WBGene00000001 load-star" href="">
+                                <a class="bench-update" wbid="WBGene00000001" ref="http://www.wormbase.org/rest/workbench" name="aap-1" is_obj="1" save_to="reports" href="http://www.wormbase.org/species/c_elegans/gene/WBGene00000001">
+                                <div id="save" class="ui-icon ui-icon-stars ui-icon-star-gray">
+                                </div>
+                                </a>
+                            </div>
+                            <h4 class="ellipsis" onclick="WB.scrollToTop();return false;"><a href="http://www.wormbase.org/species/c_elegans/gene/WBGene00000001" class="gene-link" title=""><span class="locus">aap-1</span></a></h4>
+                        </div>
+                        <ul>
+                            <div>
+                            </div>
+                            <li class="title toggle"><span class="ui-icon ui-icon-triangle-1-s"></span>Page Content</li>
+                            <div>
+                                <li id="nav-overview" class="module-load gene ui-selected" wname="overview" href="http://www.wormbase.org/rest/widget/gene/WBGene00000001/overview">Overview<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                                <li id="nav-expression" class="module-load gene" wname="expression" href="http://www.wormbase.org/rest/widget/gene/WBGene00000001/expression">Expression<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                                <li id="nav-external_links" class="module-load gene" wname="external_links" href="http://www.wormbase.org/rest/widget/gene/WBGene00000001/external_links">External Links<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                                <li id="nav-gene_ontology" class="module-load gene" wname="gene_ontology" href="http://www.wormbase.org/rest/widget/gene/WBGene00000001/gene_ontology">Gene Ontology<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                            </div>
+                            <li class="title toggle"><span class="ui-icon ui-icon-triangle-1-s"></span>Tools</li>
+                            <div>
+                                <li id="nav-epic" class="module-load tools" wname="epic" href="http://www.wormbase.org/tools/epic/run?inline=1&amp;class=gene&amp;name=WBGene00000001&amp;sequence=WBGene00000001">ACeDB Image<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                                <li id="nav-schema" class="module-load tools" wname="schema" href="http://www.wormbase.org/tools/schema/run?inline=1&amp;class=gene&amp;name=WBGene00000001&amp;sequence=WBGene00000001">Schema<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                            </div>
+                            <li class="title toggle"><span class="ui-icon ui-icon-triangle-1-s"></span>My WormBase</li>
+                            <div>
+                                <li id="nav-favourites" class="module-load me" wname="favourites" href="http://www.wormbase.org/rest/widget/me/favourites">My Favourites<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                                <li id="nav-my_library" class="module-load me" wname="my_library" href="http://www.wormbase.org/rest/widget/me/my_library">My Library<span class="ui-icon ui-icon-triangle-1-e"></span>
+                                </li>
+                            </div>
+                            <li class="title toggle"><span class="ui-icon ui-icon-triangle-1-s"></span>Recent Activity</li>
+                            <div>
+                                <div class="user-history small" id="user_history">
+                                    <div style="padding:0 1em 0.5em 1.5em">
+                                        <div class="ui-button history-logging ui-corner-large-all" href="/rest/history?history_on=1" onmouseover="WB.historyOn(&quot;get&quot;)">
+                                            turn on history ›
+                                        </div>
+                                        <br>
+                                        <span id="fade">history logging is off</span>
+                                    </div>
+                                </div>
+                                <div class="small">
+                                </div>
+                            </div>
+                            <li class="title module-load tools" id="nav-comment" wname="comment" href="http://www.wormbase.org/rest/feed/comment/gene/WBGene00000001//aap-1?url=/species/c_elegans/gene/WBGene00000001">Comments <a class="comment-count">(0)</a>
+                            </li>
+                        </ul>
+                        <div id="nav-min" title="close sidebar">
+                            <div id="nav-min-icon" class="ui-icon ui-icon-triangle-1-w">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="widget-holder" wclass="gene" class="gene title-padding" data-layout="{&quot;hash&quot;: &quot;0-9e-3&quot;}">
+                    <div class="sortable left ui-sortable table-columns" style="width: 30%; ">
+                        <li id="expression" class="widget">
+                        <!-- start expression widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="expression" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="expression">
+                                </div>
+                                <span class="widget-title">Expression</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="expression-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/expression/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end expression widget -->
+                        </li>
+                        <li id="external_links" class="widget">
+                        <!-- start external_links widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="external_links" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="external_links">
+                                </div>
+                                <span class="widget-title">External Links</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="external_links-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/external_links/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end external_links widget -->
+                        </li>
+                        <li id="gene_ontology" class="widget">
+                        <!-- start gene_ontology widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="gene_ontology" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="gene_ontology">
+                                </div>
+                                <span class="widget-title">Gene Ontology</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="gene_ontology-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/gene_ontology/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end gene_ontology widget -->
+                        </li>
+                        <li id="genetics" class="widget">
+                        <!-- start genetics widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="genetics" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="genetics">
+                                </div>
+                                <span class="widget-title">Genetics</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="genetics-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/genetics/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end genetics widget -->
+                        </li>
+                        <li id="history" class="widget">
+                        <!-- start history widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="history" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="history">
+                                </div>
+                                <span class="widget-title">History</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="history-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/history/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end history widget -->
+                        </li>
+                        <li id="homology" class="widget">
+                        <!-- start homology widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="homology" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="homology">
+                                </div>
+                                <span class="widget-title">Homology</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="homology-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/homology/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end homology widget -->
+                        </li>
+                        <li id="human_diseases" class="widget">
+                        <!-- start human_diseases widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="human_diseases" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="human_diseases">
+                                </div>
+                                <span class="widget-title">Human Diseases</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="human_diseases-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/human_diseases/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end human_diseases widget -->
+                        </li>
+                        <li id="interactions" class="widget">
+                        <!-- start interactions widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="interactions" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="interactions">
+                                </div>
+                                <span class="widget-title">Interactions</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="interactions-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/interactions/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end interactions widget -->
+                        </li>
+                        <li id="phenotype" class="widget">
+                        <!-- start phenotype widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="phenotype" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="phenotype">
+                                </div>
+                                <span class="widget-title">Phenotypes</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="phenotype-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/phenotype/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end phenotype widget -->
+                        </li>
+                        <li id="reagents" class="widget">
+                        <!-- start reagents widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="reagents" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="reagents">
+                                </div>
+                                <span class="widget-title">Reagent</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="reagents-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/reagents/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end reagents widget -->
+                        </li>
+                        <li id="references" class="widget">
+                        <!-- start references widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="references" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="references">
+                                </div>
+                                <span class="widget-title">References</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="references-content" class="content widget-narrow" style="">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/references/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end references widget -->
+                        </li>
+                        <li id="regulation" class="widget">
+                        <!-- start regulation widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="regulation" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="regulation">
+                                </div>
+                                <span class="widget-title">Regulation</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="regulation-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/regulation/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end regulation widget -->
+                        </li>
+                        <li id="epic" class="widget">
+                        <!-- start epic widget -->
+                        <div id="widget-tools" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="epic" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="epic">
+                                </div>
+                                <span class="widget-title">ACeDB Image</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="epic-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end epic widget -->
+                        </li>
+                        <li id="schema" class="widget">
+                        <!-- start schema widget -->
+                        <div id="widget-tools" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="schema" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="schema">
+                                </div>
+                                <span class="widget-title">Schema</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="schema-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end schema widget -->
+                        </li>
+                        <li id="tree" class="widget">
+                        <!-- start tree widget -->
+                        <div id="widget-tools" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="tree" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="tree">
+                                </div>
+                                <span class="widget-title">Tree Display</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="tree-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end tree widget -->
+                        </li>
+                        <li id="gmap" class="widget">
+                        <!-- start gmap widget -->
+                        <div id="widget-tools" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="gmap" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="gmap">
+                                </div>
+                                <span class="widget-title">Genetic Map</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="gmap-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end gmap widget -->
+                        </li>
+                        <li id="nucleotide_aligner" class="widget">
+                        <!-- start nucleotide_aligner widget -->
+                        <div id="widget-tools" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="nucleotide_aligner" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="nucleotide_aligner">
+                                </div>
+                                <span class="widget-title">Nucl. Aligner</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="nucleotide_aligner-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end nucleotide_aligner widget -->
+                        </li>
+                        <li id="favourites" class="widget">
+                        <!-- start favourites widget -->
+                        <div id="widget-me" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="favourites" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="favourites">
+                                </div>
+                                <span class="widget-title">My Favourites</span><span wname="favourites" class="reload ui-icon ui-icon-arrowrefresh-1-s" title="reload"></span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="favourites-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end favourites widget -->
+                        </li>
+                        <li id="my_library" class="widget">
+                        <!-- start my_library widget -->
+                        <div id="widget-me" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="my_library" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="my_library">
+                                </div>
+                                <span class="widget-title">My Library</span><span wname="my_library" class="reload ui-icon ui-icon-arrowrefresh-1-s" title="reload"></span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="my_library-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end my_library widget -->
+                        </li>
+                        <li id="comment" class="widget">
+                        <!-- start comment widget -->
+                        <div id="widget-tools" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="comment" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="comment">
+                                </div>
+                                <span class="widget-title">Comments on aap-1 <a class="comment-count">(0)</a></span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="comment-content" class="content">
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end comment widget -->
+                        </li>
+                        <li id="overview" class="widget visible">
+                        <!-- start overview widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="overview" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="overview">
+                                </div>
+                                <span class="widget-title">Overview</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="overview-content" class="content">
+                                <h2><i>aap-1</i></h2>
+                                <div class="detail-box ui-corner-all">
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title="the genus and species of the current object"> Species: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <span class="species">Caenorhabditis elegans</span>
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title="the primary corresponding sequence name of the gene, if known"> Sequence: </span>
+                                        </div>
+                                        <div class="field-content">
+                                             Y110A7A.10
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title="the locus name (also known as the CGC name) of the gene"> Public name: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <span class="locus">aap-1</span>
+                                        </div>
+                                    </div>
+                                    <div class="field disabled ">
+                                        <div class="field-title">
+                                            <span title="other names that have been used to refer to WBGene00000001"> Other names: </span>
+                                        </div>
+                                        <div class="field-content">
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title="gene type and status"> Type: </span>
+                                        </div>
+                                        <div class="field-content">
+                                             protein coding
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title="The gene class for this gene"> Gene class: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <a href="http://www.wormbase.org/resources/gene_class/aap" class="gene_class-link" title="">aap</a>
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title="Operon the gene is contained in"> Operon: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <a href="http://www.wormbase.org/species/c_elegans/operon/CEOP1906" class="operon-link" title="">CEOP1906</a>
+                                        </div>
+                                    </div>
+                                    <div class="field disabled ">
+                                        <div class="field-title">
+                                            <span title="current status of the Gene:WBGene00000001 if not Live"> Status: </span>
+                                        </div>
+                                        <div class="field-content">
+                                             Live
+                                        </div>
+                                    </div>
+                                    <div class="field disabled ">
+                                        <div class="field-title">
+                                            <span title="the person or laboratory who cloned this gene"> Cloned By: </span>
+                                        </div>
+                                        <div class="field-content">
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title=""> WormBase ID: </span>
+                                        </div>
+                                        <div class="field-content">
+                                             WBGene00000001
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="description">
+                                    <div class="evidence result">
+                                        <span class="locus"><a href="http://staging.wormbase.org/search/gene/aap-1" class="gene-link">aap-1</a></span> encodes the C. elegans ortholog of the phosphoinositide 3-kinase (PI3K) <span class="var"><a href="http://staging.wormbase.org/search/variation/p50" class="variation-link">p50</a></span>/<span class="var"><a href="http://staging.wormbase.org/search/variation/p55" class="variation-link">p55</a></span> adaptor/regulatory subunit; AAP-1 negatively regulates lifespan and dauer development, and likely functions as the sole adaptor subunit for the AGE-1/<span class="var"><a href="http://staging.wormbase.org/search/variation/p110" class="variation-link">p110</a></span> PI3K catalytic subunit to which it binds in vitro; although AAP-1 potentiates insulin-like signaling, it is not absolutely required for insulin-like signaling under most conditions.
+                                        <div id="evidence_Provisional_description" class="ev ui-helper-hidden">
+                                            <b>Date last updated</b>: 02 Mar 2006 <br>
+                                            <b>Curator confirmed</b>: <a href="http://www.wormbase.org/resources/person/WBPerson1843" class="person-link" title="">Kimberly Van Auken</a>; <a href="http://www.wormbase.org/resources/person/WBPerson48" class="person-link" title="">Carol Bastiani</a><br>
+                                            <b>Paper evidence</b>: <a href="http://www.wormbase.org/resources/paper/WBPaper00005614" class="paper-link" title="">Wolkow, Munoz, Riddle, &amp; Ruvkun, 2002</a>; <a href="http://www.wormbase.org/resources/paper/WBPaper00005729" class="paper-link" title="">Munoz &amp; Riddle, 2003</a>
+                                        </div>
+                                        <div class="ev-more">
+                                            <div class="v ev-more-line">
+                                            </div>
+                                            <div class="ev-more-text">
+                                                <span>evidence</span>
+                                            </div>
+                                            <div class="v ui-icon ui-icon-triangle-1-s">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="toggle ">
+                                    <span style="float:left" class="ui-icon ui-icon-triangle-1-e"></span> Details
+                                </div>
+                                <div class="returned ">
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title=""> Sequence features: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <div class="text-width">
+                                                <div class="evidence result">
+                                                     AAP-1 contains the hallmarks of a PI3K <span class="var"><a href="http://staging.wormbase.org/search/variation/p50" class="variation-link">p50</a></span>/<span class="var"><a href="http://staging.wormbase.org/search/variation/p55" class="variation-link">p55</a></span> adaptor subunit: two SH2 domains flanking a short inter-SH2 domain. These two SH2 domains are most cloesly related to those of mammalian PI3K <span class="var"><a href="http://staging.wormbase.org/search/variation/p85" class="variation-link">p85</a></span> and <span class="var"><a href="http://staging.wormbase.org/search/variation/p55" class="variation-link">p55</a></span>.
+                                                    <div id="evidence_Sequence_features" class="ev ui-helper-hidden">
+                                                        <b>Date last updated</b>: 02 Mar 2006 <br>
+                                                        <b>Curator confirmed</b>: <a href="http://www.wormbase.org/resources/person/WBPerson1843" class="person-link" title="">Kimberly Van Auken</a><br>
+                                                        <b>Paper evidence</b>: <a href="http://www.wormbase.org/resources/paper/WBPaper00005614" class="paper-link" title="">Wolkow, Munoz, Riddle, &amp; Ruvkun, 2002</a>
+                                                    </div>
+                                                    <div class="ev-more">
+                                                        <div class="v ev-more-line">
+                                                        </div>
+                                                        <div class="ev-more-text">
+                                                            <span>evidence</span>
+                                                        </div>
+                                                        <div class="v ui-icon ui-icon-triangle-1-s">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title=""> Biological process: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <div class="text-width">
+                                                <div class="evidence result">
+                                                    <span class="locus"><a href="http://staging.wormbase.org/search/gene/aap-1" class="gene-link">aap-1</a></span>(<span class="var"><a href="http://staging.wormbase.org/search/variation/m889" class="variation-link">m889</a></span>) animals are long-lived, and when grown at 27 degrees C, they arrest development as dauer larvae.
+                                                    <div id="evidence_Biological_process" class="ev ui-helper-hidden">
+                                                        <b>Date last updated</b>: 02 Mar 2006 <br>
+                                                        <b>Curator confirmed</b>: <a href="http://www.wormbase.org/resources/person/WBPerson1843" class="person-link" title="">Kimberly Van Auken</a><br>
+                                                        <b>Paper evidence</b>: <a href="http://www.wormbase.org/resources/paper/WBPaper00005614" class="paper-link" title="">Wolkow, Munoz, Riddle, &amp; Ruvkun, 2002</a>
+                                                    </div>
+                                                    <div class="ev-more">
+                                                        <div class="v ev-more-line">
+                                                        </div>
+                                                        <div class="ev-more-text">
+                                                            <span>evidence</span>
+                                                        </div>
+                                                        <div class="v ui-icon ui-icon-triangle-1-s">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field ">
+                                        <div class="field-title">
+                                            <span title=""> Functional physical interaction: </span>
+                                        </div>
+                                        <div class="field-content">
+                                            <div class="text-width">
+                                                <div class="evidence result">
+                                                     Bacterially expressed AAP-1 co-precipitates an amino-terminal fragment (1-286) of AGE-1, which contains the AGE-1 intersubunit interaction domain.
+                                                    <div id="evidence_Functional_physical_interaction" class="ev ui-helper-hidden">
+                                                        <b>Date last updated</b>: 02 Mar 2006 <br>
+                                                        <b>Curator confirmed</b>: <a href="http://www.wormbase.org/resources/person/WBPerson1843" class="person-link" title="">Kimberly Van Auken</a><br>
+                                                        <b>Paper evidence</b>: <a href="http://www.wormbase.org/resources/paper/WBPaper00005614" class="paper-link" title="">Wolkow, Munoz, Riddle, &amp; Ruvkun, 2002</a>
+                                                    </div>
+                                                    <div class="ev-more">
+                                                        <div class="v ev-more-line">
+                                                        </div>
+                                                        <div class="ev-more-text">
+                                                            <span>evidence</span>
+                                                        </div>
+                                                        <div class="v ui-icon ui-icon-triangle-1-s">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/overview/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end overview widget -->
+                        </li>
+                    </div>
+                    <div class="sortable right ui-sortable table-columns" style="width: 70%; ">
+                        <li id="location" class="widget visible">
+                        <!-- start location widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="location" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="location">
+                                </div>
+                                <span class="widget-title">Location</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="location-content" class="content">
+                                <div class="field ">
+                                    <div class="field-title">
+                                        <span title=""> Genetic position: </span>
+                                    </div>
+                                    <div class="field-content">
+                                         I:-0.41 +/- 0.002 cM
+                                    </div>
+                                </div>
+                                <div class="field ">
+                                    <div class="field-title">
+                                        <span title=""> Genomic position: </span>
+                                    </div>
+                                    <div class="field-content">
+                                        <a href="http://www.wormbase.org/tools/genome/gbrowse/c_elegans/?name=I:5107379..5110306" class="genomic_location-link" title="">I:5107379..5110306</a>
+                                    </div>
+                                </div>
+                                <div style="clear:both;">
+                                    <br>
+                                    <br>
+                                    <a href="http://www.wormbase.org/tools/genome/gbrowse/c_elegans/?name=I:5107379..5110306" class="genomic_location-link" title=""><img src="css/saved_resource" valign="middle" width="100%"></a>
+                                </div>
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/location/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end location widget -->
+                        </li>
+                        <li id="sequences" class="widget visible">
+                        <!-- start sequences widget -->
+                        <div id="widget-gene" class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="sequences" title="close">
+                                </div>
+                                <h3>
+                                <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="sequences">
+                                </div>
+                                <span class="widget-title">Sequences</span><span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="sequences-content" class="content">
+                                <div class="dataTables_wrapper" id="table_gene_models_constructed_by_wrapper">
+                                    <table cellpadding="0" cellspacing="0" border="0" class="display" id="table_gene_models_constructed_by">
+                                    <thead>
+                                    <tr>
+                                        <th class="sorting_asc" rowspan="1" colspan="1" style="width: 129px; ">
+                                            Transcript
+                                        </th>
+                                        <th class="sorting" rowspan="1" colspan="1" style="width: 91px; ">
+                                            Transcript<br>
+                                            Length (nt)
+                                        </th>
+                                        <th class="sorting" rowspan="1" colspan="1" style="width: 117px; ">
+                                            Type
+                                        </th>
+                                        <th class="sorting" rowspan="1" colspan="1" style="width: 116px; ">
+                                            Coding<br>
+                                            Sequence<br>
+                                            (CDS)
+                                        </th>
+                                        <th class="sorting" rowspan="1" colspan="1" style="width: 91px; ">
+                                            Coding<br>
+                                            Sequence<br>
+                                            Length (nt)
+                                        </th>
+                                        <th class="sorting" rowspan="1" colspan="1" style="width: 72px; ">
+                                            Protein
+                                        </th>
+                                        <th class="sorting" rowspan="1" colspan="1" style="width: 94px; ">
+                                            Protein<br>
+                                            Length (aa)
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="odd">
+                                        <td class=" sorting_1">
+                                            <a href="http://www.wormbase.org/rest/widget/transcript/Y110A7A.10.1/sequences" class="button ui-corner-all tip-simple slink" data-class="transcript" tip="download"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a><a href="http://www.wormbase.org/species/c_elegans/transcript/Y110A7A.10.1" class="transcript-link" title="">Y110A7A.10.1</a><br>
+                                            <a href="http://www.wormbase.org/rest/widget/transcript/Y110A7A.10.2/sequences" class="button ui-corner-all tip-simple slink" data-class="transcript" tip="download"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a><a href="http://www.wormbase.org/species/c_elegans/transcript/Y110A7A.10.2" class="transcript-link" title="">Y110A7A.10.2</a>
+                                        </td>
+                                        <td>
+                                            2322<br>
+                                            2324
+                                        </td>
+                                        <td>
+                                            Coding transcript
+                                        </td>
+                                        <td>
+                                            <a href="http://www.wormbase.org/rest/widget/cds/Y110A7A.10/sequences" class="button ui-corner-all tip-simple slink" data-class="cds" tip="download"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a><a href="http://www.wormbase.org/species/c_elegans/cds/Y110A7A.10" class="cds-link" title="">Y110A7A.10</a>
+                                        </td>
+                                        <td>
+                                            1569
+                                        </td>
+                                        <td>
+                                            <a href="http://www.wormbase.org/rest/widget/protein/WP:CE23248/sequences" class="button ui-corner-all tip-simple slink" data-class="protein" tip="download"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a><a href="http://www.wormbase.org/species/c_elegans/protein/WP:CE23248" class="protein-link" title="">AAP-1</a>
+                                        </td>
+                                        <td>
+                                            522
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="widget-footer" class="ui-helper-hidden">
+                                <a tip="download" onclick="$jq(this).toggleClass(&quot;ui-state-highlight&quot;);" class="button tip-simple tr feed ui-corner-all" rel="http://www.wormbase.org/rest/feed/download/gene/WBGene00000001/sequences/aap-1"><span class="ui-icon ui-icon-arrowthickstop-1-s ui-button"></span></a>
+                            </div>
+                            <div id="widget-feed">
+                            </div>
+                        </div>
+                        <!-- end sequences widget -->
+                        </li>
+                    </div>
+                </div>
+                <!--   </div> -->
+            </div>
+            <!-- begin boilerplate/footer -->
+            <div id="spacer">
+            </div>
+        </div>
+        <div id="footer">
+            <div id="footer-nav">
+                <div class="footer-column">
+                    <div class="footer-title">
+                        About
+                    </div>
+                    <ul>
+                        <li><span>Nematodes</span></li>
+                        <li><a href="http://www.wormbase.org/about/userguide/nomenclature">Nomenclature</a></li>
+                    </ul>
+                    <ul>
+                        <li><span>WormBase</span></li>
+                        <li><a href="http://www.wormbase.org/about#0--10">Mission</a></li>
+                        <li><a href="http://www.wormbase.org/about/staff#01--10">WormBase Staff</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">
+                        Support
+                    </div>
+                    <ul>
+                        <li class="operator"><a href="javascript:void(0)">Chat</a></li>
+                        <li><a href="http://www.wormbase.org/about/userguide#023-1-5">Submit Data</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">
+                        Community
+                    </div>
+                    <ul>
+                        <li><a href="http://www.wormbook.org/" onclick="WB.recordOutboundLink(this, &#39;Outbound Links&#39;, &#39;http://www.wormbook.org/&#39;);" target="_blank" title="">WormBook</a></li>
+                        <li><a href="http://forums.wormbase.org/" onclick="WB.recordOutboundLink(this, &#39;Outbound Links&#39;, &#39;http://forums.wormbase.org&#39;);" target="_blank" title="">Forum</a></li>
+                    </ul>
+                    <ul>
+                        <li><span>Friends</span></li>
+                        <li><a target="_blank" href="http://www.wormatlas.org/">WormAtlas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">
+                        Developer
+                    </div>
+                    <ul>
+                        <li><a href="" onclick="WB.recordOutboundLink(this, &#39;Outbound Links&#39;, &#39;&#39;);" target="_blank" title="">Amazon EC2 AMI</a></li>
+                        <li><a href="http://www.wormbase.org/about/userguide/for_developers">Developer Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">
+                        Downloads
+                    </div>
+                    <ul>
+                        <li><a href="ftp://ftp.wormbase.org/pub/wormbase/">FTP site</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <div class="footer-title">
+                        Data Freezes
+                    </div>
+                    <ul>
+                        <li>
+                        <select id="data-freezes" onchange="window.location.href = this.options[this.selectedIndex].value">
+                            <option selected="selected" value="--">--</option>
+                            <option value="http://ws220.wormbase.org">WS220 (16 Dec 2010)</option>
+                            <option value="http://ws210.wormbase.org">WS210 (15 Jan 2010)</option>
+                            <option value="http://ws205.wormbase.org">WS205 (18 Sep 2009)</option>
+                            <option value="http://ws204.wormbase.org">WS204 (13 Aug 2009)</option>
+                        </select>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br clear="all">
+            <div id="footercredit">
+                <span>
+                WormBase is supported by grant #P41 HG02223 from the <a href="http://www.genome.gov/">National Human Genome Research Institute</a></span><br>
+                <span>at the <a href="http://www.nih.gov/">US National Institutes of Health</a> and the <a href="http://www.mrc.ac.uk/">British Medical Research Council</a>. </span>
+            </div>
+            <div id="footermeta">
+                <a id="footer-mail" href="mailto:help@wormbase.org">
+                <div class="social-icons">
+                </div>
+                </a>
+                <a id="footer-tweet" href="http://twitter.com/wormbase">
+                <div class="social-icons">
+                </div>
+                </a>
+                <a id="footer-rss" href="http://feeds.feedburner.com/wormbase">
+                <div class="social-icons">
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
