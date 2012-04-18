@@ -20,4 +20,4 @@ See `index.html` and edit:
 ```
 
 ## Example:
-![image](https://raw.github.com/radekstepan/ratmine-widget-example/master/example.png)
+![image](https://github.com/radekstepan/intermine-embedding-examples/raw/master/ratmine-widgets/example.png)
