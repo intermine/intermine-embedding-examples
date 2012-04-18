@@ -1,1 +1,0 @@
-Example of creating an `imjs` displayer on a WormBase page

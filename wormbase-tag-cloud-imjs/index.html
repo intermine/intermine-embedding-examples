@@ -6,6 +6,51 @@
     <title>WormBase: Gene Summary: aap-1 </title>
     
     <link type="text/css" href="css/wormbase.css" rel="stylesheet">
+
+    <style>
+        #intermine .size1 { font-size:1.0em; color:rgba(0, 0, 184, .3) }
+        #intermine .size2 { font-size:1.1em; color:rgba(0, 0, 184, .4) }
+        #intermine .size3 { font-size:1.2em; color:rgba(0, 0, 184, .5) }
+        #intermine .size4 { font-size:1.3em; color:rgba(0, 0, 184, .6) }
+        #intermine .size5 { font-size:1.4em; color:rgba(0, 0, 184, .7) }
+        #intermine .size6 { font-size:1.5em; color:rgba(0, 0, 184, .8) }
+        #intermine .size7 { font-size:1.6em; color:rgba(0, 0, 184, .9) }
+        #intermine .size8 { font-size:1.7em; color:rgba(0, 0, 184, 1) }
+        #intermine-content span:not(:last-child):after { content:", "; }
+    </style>
+
+    <!-- jQuery and underscore.js dependencies -->
+    <script type="text/javascript" src="../lib/jquery-1.7.js"></script>
+    <script type="text/javascript" src="../lib/underscore.js"></script>
+
+    <!-- imjs library -->
+    <script type="text/javascript" src="../lib/imjs/src/model.js"></script>
+    <script type="text/javascript" src="../lib/imjs/src/lists.js"></script>
+    <script type="text/javascript" src="../lib/imjs/src/service.js"></script>
+    <script type="text/javascript" src="../lib/imjs/src/query.js"></script>
+
+    <script type="text/javascript">
+    (function() {
+        var metabolicmine = new intermine.Service({ root: "test.metabolicmine.org/test" });
+        var query = {
+            select: ["homologues.homologue.id", "homologues.homologue.alleles.id", "homologues.homologue.alleles.genotypes.id"],
+            from: "Gene",
+            where: {
+                id: { eq: 1015457 }
+            }
+        };
+        metabolicmine.query(query, function(q) {
+            q.summarise("homologues.homologue.alleles.genotypes.phenotypeTerms.name", function(items) {
+                _(items).each(function(row, index) {
+                    $('#intermine-content').append($('<span/>', {
+                        'text': row.item,
+                        'class': 'size' + row.count,
+                    }));
+                });
+            });
+        });
+    })();
+    </script>
 </head>
 <body>
     <div id="notifications" class="ui-corner-bottom" style="top: 0px; ">
@@ -362,6 +407,25 @@
                 </div>
                 <div id="widget-holder" wclass="gene" class="gene title-padding">
                     <div class="sortable left ui-sortable table-columns" style="width: 30%; ">
+
+                        <li id="intermine" class="widget visible">
+                        <!-- start custom InterMine displayer -->
+                        <div class="widget-container ui-corner-all">
+                            <div class="ui-corner-top widget-header">
+                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="overview" title="close"></div>
+                                <h3>
+                                    <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="overview"></div>
+                                    <span class="widget-title">InterMine</span>
+                                    <span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
+                                </h3>
+                            </div>
+                            <div id="intermine-content" class="content"></div>
+                        </div>
+                        <!-- end custom InterMine displayer -->
+                        </li>
+
+                    </div>
+                    <div class="sortable right ui-sortable table-columns" style="width: 70%; ">
                         <li id="overview" class="widget visible">
                         <!-- start overview widget -->
                         <div id="widget-gene" class="widget-container ui-corner-all">
@@ -563,24 +627,6 @@
                         <!-- end overview widget -->
                         </li>
 
-                        <li id="intermine" class="widget visible">
-                        <!-- start custom InterMine displayer -->
-                        <div class="widget-container ui-corner-all">
-                            <div class="ui-corner-top widget-header">
-                                <div class="module-close ui-icon ui-icon-large ui-icon-close" wname="overview" title="close"></div>
-                                <h3>
-                                    <div class="module-min ui-icon-large ui-icon-triangle-1-s" title="minimize" wname="overview"></div>
-                                    <span class="widget-title">InterMine</span>
-                                    <span class="ui-icon ui-icon-arrow-4 hide ui-helper-hidden" title="move"></span>
-                                </h3>
-                            </div>
-                            <div id="intermine-content" class="content"></div>
-                        </div>
-                        <!-- end custom InterMine displayer -->
-                        </li>
-
-                    </div>
-                    <div class="sortable right ui-sortable table-columns" style="width: 70%; ">
                         <li id="location" class="widget visible">
                         <!-- start location widget -->
                         <div id="widget-gene" class="widget-container ui-corner-all">
@@ -624,6 +670,7 @@
                         </div>
                         <!-- end location widget -->
                         </li>
+
                         <li id="sequences" class="widget visible">
                         <!-- start sequences widget -->
                         <div id="widget-gene" class="widget-container ui-corner-all">

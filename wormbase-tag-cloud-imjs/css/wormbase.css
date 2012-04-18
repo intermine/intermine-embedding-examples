@@ -542,7 +542,7 @@ div#footer{color:#CCC;background:#000;overflow:auto;position:absolute;width:100%
 #footer ul,#footer li{list-style:none;margin-left:0;padding-left:0;}
 #footer li>a,#footer li>span{line-height:2em;font-size:.9em;white-space:nowrap;color:#aaa;}
 #footer li>span{color:#eee;}
-.social-icons{background-image:url(/img/new-icons.png);height:30px;width:30px;background-position:0 0;}
+.social-icons{background-image:url(new-icons.png);height:30px;width:30px;background-position:0 0;}
 #footermeta a{height:30px;width:30px;overflow:hidden;float:right;padding:0 5px;}
 #footer-mail .social-icons{background-position:-30px -20px;}
 #footer-mail .social-icons:hover{background-position:-30px -50px;}
