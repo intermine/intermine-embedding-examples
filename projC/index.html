@@ -1,0 +1,1085 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <title>Diabetes Portal - Rat Genes, QTLs, and Strains - Rat Genome Database</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/rgd_styles.css" />
+
+    <style>
+        .widget,
+        .widget a,
+        .widget h3,
+        .widget p,
+        .widget select,
+        .widget th,
+        .widget td,
+        .widget td a { font-size:11px; text-align:left; }
+        .widget { margin:20px; width:460px; }
+        .widget h3 { color:#000; margin:0; }
+        .widget div.wrapper { border:0; width:auto; }
+        .widget table { border-collapse:collapse; border-spacing:0; width:100%; } 
+        .widget th { padding:0 8px; }
+        .widget tr:nth-child(odd) td { background:#FAFAE6; }
+        .widget td { font-size:11px; border-top:1px solid #C3C3C3; padding:3px 8px; } 
+        .widget a.btn { background:url('./css/menu_bkgd.gif') repeat-x; border:1px solid #194B74; padding:2px; cursor:pointer; }
+        .widget .popover { background:#FFF; border:1px solid #777; }
+        .widget .popover a.close { float:right; font-size:14px; }
+        .widget .popover h3 { background:#D6E6EE; margin:0 0 4px 0; padding:4px 9px; }
+        .widget .popover h4 { margin:0; }
+        .widget .popover .popover-inner { padding:1px; box-shadow:0 3px 7px rgba(0, 0, 0, 0.3); background:#FFF; margin:0 !important; }
+        .widget .popover .popover-content { padding:9px; }
+    </style>
+
+    <!-- widgets.js -->
+    <script src="widgets/js/widgets.js"></script>
+
+    <script type="text/javascript">
+    (function() {
+        /* InterMine root URL. */
+        var mine = "http://aragorn:8080/flymine";
+
+        /* New Widgets client. */
+        var widgets = new Widgets(mine + "/service/");
+
+        /* Give us BDGP Expression Patterns Enrichment Widget. */
+        widgets.enrichment('go_enrichment_for_gene', 'demo-genes', '#go-widget');
+
+        /* Give us Protein Domain Enrichment Widget. */
+        widgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#protein-domain-widget');
+    })();
+    </script>
+</head>
+
+<body class="c18" links="#0033FF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+
+            <tr align="left" valign="top">
+                <td width="440" background="./css/header-bkgd.gif" nowrap="nowrap">
+                <img src="./css/diabetes.gif" border="0" /></td>
+
+                <td background="./css/header-bkgd.gif" nowrap="nowrap"><img src=
+                "./css/shim.gif" width="20" height="1" /></td>
+
+                <td width="100%" valign="bottom" nowrap="nowrap" background=
+                "./css/header-bkgd.gif"><a href="http://pga.mcw.edu/"><img src=
+                "./css/physGen_logo2.gif" border="0" /></a></td>
+
+                <td width="240" background="./css/header-bkgd.gif" align="left" valign=
+                "middle" nowrap="nowrap">
+                    <form method="post" action=
+                    "http://rgd.mcw.edu/generalSearch/RgdSearch.jsp" onsubmit=
+                    "return verify(this);"></form>
+
+                    <table border="0" cellpadding="2" cellspacing="1" width="240">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>&nbsp;<br />
+                                    <strong>Search&nbsp;RGD</strong> <input type="text"
+                                    name="searchKeyword" size="12" value=" *disease"
+                                    onfocus=
+                                    "JavaScript:document.forms[0].searchKeyword.value=''" />
+                                     <input type="hidden" name="quickSearch" value="1" />
+                                    <input type="submit" value="Go " /></p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+                <td width="5" background="./css/header-bkgd.gif" nowrap="nowrap">
+                <img src="./css/shim.gif" width="5" height="1" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <td class="c3" colspan="2"><img src="./css/shim.gif" width="1" height=
+                "1" /></td>
+            </tr>
+
+            <tr align="left">
+                <td background="./css/menu_bkgd.gif">
+                    <table width="800" border="0" cellspacing="0" cellpadding="1">
+                        <tbody>
+                            <tr>
+                                <td width="30"><img src="./css/shim.gif" width="30"
+                                height="1" /></td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href="http://rgd.mcw.edu/" class=
+                                    "atitle">RGD&nbsp;Home</a></p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "./css/Diabetes%20Portal%20-%20Rat%20Genes,%20QTLs,%20and%20Strains%20-%20Rat%20Genome%20Database.html"
+                                    class="atitle">Diseases</a>&nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "http://rgd.mcw.edu/rgdCuration/?module=portal&amp;func=show&amp;name=diabetesph"
+                                    class="atitle">Phenotypes</a>&nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "http://rgd.mcw.edu/rgdCuration/?module=portal&amp;func=show&amp;name=diabetesbp"
+                                    class=
+                                    "atitle">Biological&nbsp;Processes</a>&nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "http://rgd.mcw.edu/rgdCuration/?module=portal&amp;func=show&amp;name=diabetespw"
+                                    class="atitle">Pathways</a>&nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "http://rgd.mcw.edu/wg/diabetes_portal_tools" class=
+                                    "atitle">Tools</a>&nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "http://rgd.mcw.edu/wg/diabetes_portal_related_links"
+                                    class="atitle">Related&nbsp;Links</a>&nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/dotline1.gif" width="1" height=
+                                "20" /></td>
+
+                                <td>
+                                    <p>&nbsp;<a href=
+                                    "http://rgd.mcw.edu/wg/diabetes_portal_models" class=
+                                    "atitle">Rat&nbsp;Strain&nbsp;Models</a>&nbsp;</p>
+                                </td>
+
+                                <td width="1"><img src="./css/shim.gif" width="1" height=
+                                "1" /></td>
+
+                                <td width="110"><img src="./css/shim.gif" width="110"
+                                height="1" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+
+                <td width="100%" background="./css/menu_bkgd.gif">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td class="c3" colspan="2"><img src="./css/shim.gif" width="1" height=
+                "1" /></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr align="left" valign="top">
+                <td width="5"><img src="./css/shim.gif" width="30" height="1" /></td>
+
+                <td width="100%">
+
+                    <table width="100%" border="0" cellspacing="0" cellpadding="1">
+                        <tbody>
+                            <tr valign="top">
+                                <td colspan="5" align="left">
+                                    <!-- Start Title Table -->
+
+                                    <table width="100%" border="0" cellspacing="0"
+                                    cellpadding="0">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2"><img src="./css/shim.gif"
+                                                width="1" height="15" /></td>
+                                            </tr>
+
+                                            <tr class="c4">
+                                                <td><img src="./css/shim.gif" width="1"
+                                                height="30" /></td>
+
+                                                <td>
+                                                    <div>
+                                                        <span class=
+                                                        "nobr"><strong><em>Diabetes
+                                                        Portal - Rat Genes, QTLs, and
+                                                        Strains - Rat Genome
+                                                        Database&nbsp;:</em></strong></span>
+                                                        &nbsp; <span id=
+                                                        "category">Diabetes
+                                                        Portal</span><span id=
+                                                        "diseasename"></span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2"><img src="./css/shim.gif"
+                                                width="1" height="10" /></td>
+                                            </tr>
+                                        </tbody>
+                                    </table><!-- End Title Table -->
+                                </td>
+                            </tr>
+
+                            <tr valign="top">
+                                <td colspan="5" align="left">
+                                    <!-- End Summary Table -->
+                                    <br />
+                                    <!-- Start GViewer Table -->
+
+                                    <table class="c13" width="100%" border="0"
+                                    cellpadding="1" cellspacing="0">
+                                        <tbody>
+                                            <tr valign="top">
+                                                <td>
+                                                    <!-- Gene box start -->
+
+                                                    <table class="c10" width="100%"
+                                                    border="0" cellpadding="1"
+                                                    cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="c8"
+                                                                    width="100%" border=
+                                                                    "0" cellpadding="2"
+                                                                    cellspacing="1" id=
+                                                                    "geneInfoTable">
+                                                                        <tbody>
+                                                                            <tr class=
+                                                                            "c6">
+                                                                                <td colspan="3">
+                                                                                <p class="c5">
+                                                                                    Genes
+                                                                                    Info</p>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <tr class=
+                                                                            "c7">
+                                                                                <td id=
+                                                                                "geneInfoRatHeader"
+                                                                                width=
+                                                                                "122">
+                                                                                <strong>Rat</strong></td>
+
+                                                                                <td id=
+                                                                                "geneInfoHumanHeader"
+                                                                                width=
+                                                                                "122">
+                                                                                <strong>Human</strong></td>
+
+                                                                                <td id=
+                                                                                "geneInfoMouseHeader">
+                                                                                <strong>Mouse</strong></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <div class="c9" id=
+                                                                    "geneInfo">
+                                                                        <table width=
+                                                                        "100%" border="0"
+                                                                        cellpadding="2"
+                                                                        cellspacing="1">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td valign="top"
+                                                                                    id=
+                                                                                    "geneInfoRatData"
+                                                                                    width="122">
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=708522"
+                                                                                    target="new">
+                                                                                    Aacs</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=2006"
+                                                                                    target="new">
+                                                                                    Aanat</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=620948"
+                                                                                    target="new">
+                                                                                    Abat</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=631344"
+                                                                                    target="new">
+                                                                                    Abca1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=619951"
+                                                                                    target="new">
+                                                                                    Abcb1a</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=3318"
+                                                                                    target="new">
+                                                                                    Abcb1b</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=620248"
+                                                                                    target="new">
+                                                                                    Abcb4</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=71077"
+                                                                                    target="new">
+                                                                                    Abcb6</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=2366"
+                                                                                    target="new">
+                                                                                    Abcc2</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=71101"
+                                                                                    target="new">
+                                                                                    Abcc3</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=620268"
+                                                                                    target="new">
+                                                                                    Abcc6</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=3786"
+                                                                                    target="new">
+                                                                                    Abcc8</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=3787"
+                                                                                    target="new">
+                                                                                    Abcc9</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1562128"
+                                                                                    target="new">
+                                                                                    Abcd1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=69244"
+                                                                                    target="new">
+                                                                                    Abcd2</a><br />
+                                                                                    </td>
+
+                                                                                    <td valign="top"
+                                                                                    id=
+                                                                                    "geneInfoHumanData"
+                                                                                    width="122">
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=732340"
+                                                                                    target="new">
+                                                                                    AACS</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736736"
+                                                                                    target="new">
+                                                                                    AANAT</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=732065"
+                                                                                    target="new">
+                                                                                    ABAT</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736157"
+                                                                                    target="new">
+                                                                                    ABCA1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=730823"
+                                                                                    target="new">
+                                                                                    ABCB1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736946"
+                                                                                    target="new">
+                                                                                    ABCB4</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=731735"
+                                                                                    target="new">
+                                                                                    ABCB6</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=619569"
+                                                                                    target="new">
+                                                                                    ABCC2</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736866"
+                                                                                    target="new">
+                                                                                    ABCC3</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=734433"
+                                                                                    target="new">
+                                                                                    ABCC6</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=733938"
+                                                                                    target="new">
+                                                                                    ABCC8</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=735726"
+                                                                                    target="new">
+                                                                                    ABCC9</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1352747"
+                                                                                    target="new">
+                                                                                    ABCD1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=730967"
+                                                                                    target="new">
+                                                                                    ABCD2</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736620"
+                                                                                    target="new">
+                                                                                    ABCD3</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1352615"
+                                                                                    target="new">
+                                                                                    ABCG2</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=732219"
+                                                                                    target="new">
+                                                                                    ABCG5</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=732770"
+                                                                                    target="new">
+                                                                                    ABCG8</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=732341"
+                                                                                    target="new">
+                                                                                    ABP1</a><br />
+                                                                                    </td>
+
+                                                                                    <td valign="top"
+                                                                                    id=
+                                                                                    "geneInfoMouseData">
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=69200"
+                                                                                    target="new">
+                                                                                    a</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1332110"
+                                                                                    target="new">
+                                                                                    Aacs</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736737"
+                                                                                    target="new">
+                                                                                    Aanat</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1332048"
+                                                                                    target="new">
+                                                                                    Abat</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1332354"
+                                                                                    target="new">
+                                                                                    Abca1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1620890"
+                                                                                    target="new">
+                                                                                    Abcb1a</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1332185"
+                                                                                    target="new">
+                                                                                    Abcb1b</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=11094"
+                                                                                    target="new">
+                                                                                    Abcb4</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=10368"
+                                                                                    target="new">
+                                                                                    Abcc2</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736867"
+                                                                                    target="new">
+                                                                                    Abcc3</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=734434"
+                                                                                    target="new">
+                                                                                    Abcc6</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=736889"
+                                                                                    target="new">
+                                                                                    Abcc8</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=11362"
+                                                                                    target="new">
+                                                                                    Abcc9</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1557916"
+                                                                                    target="new">
+                                                                                    Abcd1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=730968"
+                                                                                    target="new">
+                                                                                    Abcd2</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=10051"
+                                                                                    target="new">
+                                                                                    Abcd3</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/gene/main.html?id=1551496"
+                                                                                    target="new">
+                                                                                    Abcg2</a><br />
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!-- Gene box end -->
+                                                    <img src="./css/shim.gif" width="240"
+                                                    height="1" />
+                                                </td>
+
+                                                <td><img src="./css/shim.gif" width="8"
+                                                height="1" /></td>
+
+                                                <td>
+                                                    <!--  QTL box start -->
+
+                                                    <table class="c10" width="100%"
+                                                    border="0" cellpadding="1"
+                                                    cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="c8"
+                                                                    width="100%" border=
+                                                                    "0" cellpadding="2"
+                                                                    cellspacing="1" id=
+                                                                    "qtlInfoTable">
+                                                                        <tbody>
+                                                                            <tr class=
+                                                                            "c6">
+                                                                                <td colspan="3">
+                                                                                <p class="c5">
+                                                                                    QTLs
+                                                                                    Info</p>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <tr class=
+                                                                            "c7">
+                                                                                <td id=
+                                                                                "qtlInfoRatHeader"
+                                                                                width=
+                                                                                "122">
+                                                                                <strong>Rat</strong></td>
+
+                                                                                <td id=
+                                                                                "qtlInfoHumanHeader"
+                                                                                width=
+                                                                                "122">
+                                                                                <strong>Human</strong></td>
+
+                                                                                <td id=
+                                                                                "qtlInfoMouseHeader">
+                                                                                <strong>Mouse</strong></td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <div class="c11" id=
+                                                                    "qtlInfo">
+                                                                        <table width=
+                                                                        "100%" border="0"
+                                                                        cellpadding="2"
+                                                                        cellspacing="1">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td valign="top"
+                                                                                    id=
+                                                                                    "qtlInfoRatData"
+                                                                                    width="122">
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=61387"
+                                                                                    target="new">
+                                                                                    Bp1</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=61458"
+                                                                                    target="new">
+                                                                                    Bp10</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631498"
+                                                                                    target="new">
+                                                                                    Bp100</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631501"
+                                                                                    target="new">
+                                                                                    Bp101</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631503"
+                                                                                    target="new">
+                                                                                    Bp102</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631505"
+                                                                                    target="new">
+                                                                                    Bp103</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631506"
+                                                                                    target="new">
+                                                                                    Bp104</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631507"
+                                                                                    target="new">
+                                                                                    Bp105</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631652"
+                                                                                    target="new">
+                                                                                    Bp106</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631654"
+                                                                                    target="new">
+                                                                                    Bp107</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631656"
+                                                                                    target="new">
+                                                                                    Bp108</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=61461"
+                                                                                    target="new">
+                                                                                    Bp11</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631682"
+                                                                                    target="new">
+                                                                                    Bp115</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631683"
+                                                                                    target="new">
+                                                                                    Bp116</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631684"
+                                                                                    target="new">
+                                                                                    Bp117</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631685"
+                                                                                    target="new">
+                                                                                    Bp118</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=631686"
+                                                                                    target="new">
+                                                                                    Bp119</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=61463"
+                                                                                    target="new">
+                                                                                    Bp12</a><br />
+                                                                                    </td>
+
+                                                                                    <td valign="top"
+                                                                                    id=
+                                                                                    "qtlInfoHumanData"
+                                                                                    width="122">
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1298487"
+                                                                                    target="new">
+                                                                                    BFD1_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1298411"
+                                                                                    target="new">
+                                                                                    BFD2_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1298426"
+                                                                                    target="new">
+                                                                                    BFD3_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1298407"
+                                                                                    target="new">
+                                                                                    BFD4_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1298414"
+                                                                                    target="new">
+                                                                                    BFD5_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643401"
+                                                                                    target="new">
+                                                                                    BMD1_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643402"
+                                                                                    target="new">
+                                                                                    BMD2_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643404"
+                                                                                    target="new">
+                                                                                    BMD3_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=2289435"
+                                                                                    target="new">
+                                                                                    BMD4_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643399"
+                                                                                    target="new">
+                                                                                    BMD5_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643406"
+                                                                                    target="new">
+                                                                                    BMD6_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=2289430"
+                                                                                    target="new">
+                                                                                    BMD7_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643403"
+                                                                                    target="new">
+                                                                                    BMD8_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1643405"
+                                                                                    target="new">
+                                                                                    BMD9_H</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1298483"
+                                                                                    target="new">
+                                                                                    BP10_H</a><br />
+                                                                                    </td>
+
+                                                                                    <td valign="top"
+                                                                                    id=
+                                                                                    "qtlInfoMouseData">
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1301055"
+                                                                                    target="new">
+                                                                                    Bwtq6_m</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1302202"
+                                                                                    target="new">
+                                                                                    Dob3_m</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1301063"
+                                                                                    target="new">
+                                                                                    Dob4_m</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1300644"
+                                                                                    target="new">
+                                                                                    Fob3_m</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1301204"
+                                                                                    target="new">
+                                                                                    Mob4_m</a><br />
+
+                                                                                    <a href="http://rgd.mcw.edu/rgdweb/report/qtl/main.html?id=1357407"
+                                                                                    target="new">
+                                                                                    Pfat4_m</a><br />
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!-- QTL box end -->
+                                                    <img src="./css/shim.gif" width="240"
+                                                    height="1" />
+                                                </td>
+
+                                                <td><img src="./css/shim.gif" width="8"
+                                                height="1" /></td>
+
+                                                <td>
+                                                    <!-- Strain box start -->
+
+                                                    <table class="c10" width="100%"
+                                                    border="0" cellpadding="1"
+                                                    cellspacing="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="c8"
+                                                                    width="100%" border=
+                                                                    "0" cellpadding="2"
+                                                                    cellspacing="1" id=
+                                                                    "strainInfoTable">
+                                                                        <colgroup>
+                                                                            <col width=
+                                                                            "100%" />
+                                                                        </colgroup>
+
+                                                                        <tbody>
+                                                                            <tr class=
+                                                                            "c6">
+                                                                                <td>
+                                                                                    <p class="c5">
+                                                                                    Strains
+                                                                                    Info</p>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <tr class=
+                                                                            "c7">
+                                                                                <td>
+                                                                                    <p>
+                                                                                    <strong>
+                                                                                    Rat&nbsp;&nbsp;</strong></p>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <div class="c9">
+                                                                        <table class="c8"
+                                                                        width="100%"
+                                                                        border="0"
+                                                                        cellpadding="2"
+                                                                        cellspacing="1">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td width="100%"
+                                                                                    valign="top">
+                                                                                    <div id="strainInfo">
+                                                                                        <table width="100%"
+                                                                                            border="0"
+                                                                                            cellpadding="2"
+                                                                                            cellspacing="1">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td valign="top"
+                                                                                                        id="strainInfoRatData">
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=2293012"
+                                                                                                        target="new">
+                                                                                                        ACI.BBDP-(<i>RT1<sup>u</sup></i>),(<i>Gimap5</i>)/Sunn</a><i><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1598801"
+                                                                                                        target="new">
+                                                                                                        ACI.FHH-(<i>D1Mit18-D1Mit8</i>)(<i>D14Mit11-D14Hmgc14b</i>)(<i>D14Rat65-D14Rat90</i>)/Eur</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1598800"
+                                                                                                        target="new">
+                                                                                                        ACI.FHH-(<i>D1Rat384-D1Rat156</i>)/Eur</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1598799"
+                                                                                                        target="new">
+                                                                                                        ACI.FHH-(<i>D1Rat384-D1Rat452</i>)(<i>D17Rat61-D1Arb5</i>)(<i>D17Rat51</i>)/Eur</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=10000"
+                                                                                                        target="new">
+                                                                                                        ACI/N</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=728187"
+                                                                                                        target="new">
+                                                                                                        ACI/N-<i>j</i></a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=67958"
+                                                                                                        target="new">
+                                                                                                        AS</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=61011"
+                                                                                                        target="new">
+                                                                                                        BB</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1357980"
+                                                                                                        target="new">
+                                                                                                        BB.SHR-(<i>D4Got41-Tacr1</i>)/K</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=631699"
+                                                                                                        target="new">
+                                                                                                        BB.SHR-(<i>D6Rat184-D6Rat101</i>)</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=631700"
+                                                                                                        target="new">
+                                                                                                        BB.SHR-(<i>Gnal-D18Mit9</i>)</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=61107"
+                                                                                                        target="new">
+                                                                                                        BB/OK</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=10002"
+                                                                                                        target="new">
+                                                                                                        BBDP</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1599675"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D13Rat124-D13Mgh5</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1641857"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D8Rat16-D8Sunn1467</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1599674"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D8Rat59-D8Sunn1467</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1641870"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D8Rat73-D8Rat121</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1641855"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D8Rat73-D8Rat20</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1641874"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D8Rat73-D8Rat90</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1641876"
+                                                                                                        target="new">
+                                                                                                        BBDP.WF-(<i>D8Rat73-D8Sunn1467</i>)/Sunn</a><br />
+
+                                                                                                        <a href="http://rgd.mcw.edu/rgdweb/report/strain/main.html?id=1642018"
+                                                                                                        target="new">
+                                                                                                        BBDP/WorBrm</a><br />
+                                                                                                        </i></td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+
+                                                                                <tr valign="top">
+                                                                                <td>
+                                                                                        <div id="no-strain">
+                                                                                        </div>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!-- Strain box end -->
+                                                    <br />
+                                                    <img src="./css/shim.gif" width="240"
+                                                    height="1" />
+                                                </td>
+                                            </tr>
+
+                                            <tr valign="top">
+                                                <td colspan="5" align="center">
+                                                    <!-- Start Fusion Charts Table -->
+
+                                                    <table class="c10" width="100%"
+                                                    border="0" cellpadding="0"
+                                                    cellspacing="1">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <table class="c8"
+                                                                    width="100%" border=
+                                                                    "0" cellpadding="0"
+                                                                    cellspacing="1">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <table class="c8"
+                                                                                    width="100%"
+                                                                                    border="0"
+                                                                                    cellspacing="0">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td class="c12"
+                                                                                                width="100%">
+                                                                                                <p>
+                                                                                                    &nbsp;<strong>Gene
+                                                                                                    Ontology
+                                                                                                    Annotation
+                                                                                                    Overview</strong>
+                                                                                                    </p>
+                                                                                                </td>
+
+                                                                                                <td class="c12">
+                                                                                                </td>
+                                                                                            </tr>
+
+                                                                                            <tr>
+                                                                                            <td align="left"
+                                                                                                valign="top">
+                                                                                                <table>
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td align="center"
+                                                                                                                valign="top">
+                                                                                                                <div class="widget" id="fake-widget">
+                                                                                                                    <center>
+                                                                                                                    <img src="css/flash-widget.png" />
+                                                                                                                    </center>
+                                                                                                                </div>
+                                                                                                            </td>
+
+                                                                                                            <td align="center"
+                                                                                                                valign="top">
+                                                                                                                <div class="widget" id="go-widget">
+
+                                                                                                                </div>
+                                                                                                            </td>
+
+                                                                                                            <td align="center"
+                                                                                                                valign="top">
+                                                                                                                <div class="widget" id="protein-domain-widget">
+
+                                                                                                                </div>
+                                                                                                            </td>
+                                                                                                            </tr>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <!-- End Fusion Charts Table -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table><br />
+                                    <!--  END CNT_DISEASE INCLUDE FILE FOR MAIN CONTENT -->
+                                    <br />
+                                </td>
+
+                                <td width="15"><img src="./css/shim.gif" width="15"
+                                height="1" /></td>
+                            </tr>
+                        </tbody>
+                    </table><!-- footer  -->
+
+                    <table class="c15" width="100%" border="0" cellpadding="0"
+                    cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class="c14" colspan="3"><img src="./css/shim.gif"
+                                width="10" height="1" /></td>
+                            </tr>
+
+                            <tr>
+                                <td><img src="./css/shim.gif" width="20" height=
+                                "1" /></td>
+
+                                <td width="100%">
+                                    <p class="phome">&nbsp;<br />
+                                    <a href="http://rgd.mcw.edu/">The Rat Genome
+                                    Database</a>, <a href=
+                                    "http://www.mcw.edu/bioinformatics.htm">Bioinformatics
+                                    Program, HMGC</a>, <a href=
+                                    "http://www.mcw.edu/">Medical College of
+                                    Wisconsin</a>.<br />
+                                    &nbsp;</p>
+                                </td>
+
+                                <td><img src="./css/shim.gif" width="30" height=
+                                "1" /></td>
+                            </tr>
+                        </tbody>
+                    </table><a class="c17" href=
+                    "http://rgd.mcw.edu/rgdCuration/?module=searchEngine&amp;func=showAll"><span class="c16">All</span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
