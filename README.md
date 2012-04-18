@@ -19,4 +19,4 @@ Visit each of the example folders and follow instructions there.
 
 ## Cross-Site Scripting Error:
 
-If you see an error running the demos 'as a file://' then start the web server `./webserver.sh` and visit `0.0.0.0:1112`.
+If you see an error running the demos as a `file://` then start the web server `./webserver.sh` and visit [http://0.0.0.0:1112](http://0.0.0.0:1112).

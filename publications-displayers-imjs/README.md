@@ -15,7 +15,8 @@ Service Client for embedding InterMine Displayers that does not make you have a 
     1. any other files are copied over
     1. .eco files get compiled
     1. (optional) templates get minified
-1. <code>./webserver.sh</code>
+1. <code>./webserver.sh</code> (in top level directory)
+1. visit [http://0.0.0.0:1112/publications-displayers-imjs/](http://0.0.0.0:1112/publications-displayers-imjs/)
 
 ## Example:
 ![image](https://github.com/radekstepan/intermine-embedding-examples/raw/master/publications-displayers-imjs/example.png)
