@@ -27,4 +27,4 @@ See `index.html` and edit:
 ```
 
 ## Example:
-![image](https://github.com/radekstepan/intermine-embedding-examples/raw/master/tag-cloud-imjs/example.png)
+![image](https://github.com/radekstepan/intermine-embedding-examples/raw/master/wormbase-tag-cloud-imjs/example.png)
