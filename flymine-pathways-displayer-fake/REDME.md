@@ -1,0 +1,1 @@
+An example of dynamically updating a grid of data from multiple mines.

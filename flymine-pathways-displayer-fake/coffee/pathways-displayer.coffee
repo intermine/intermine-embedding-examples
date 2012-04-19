@@ -46,11 +46,11 @@ $ () ->
   window.Grid = grid = {}
 
   # Generate the `<thead>`.
-  row = $('<tr/>')
-  row.append $('<th/>')
+  row = $ '<tr/>'
+  row.append $ '<th/>'
   for mine in mines
     row.append $('<th/>', { 'text': mine })
-  row.appendTo $('table#pathways thead')
+  row.appendTo $ 'table#pathways thead'
 
   # Traverse the server data.
   for mine in data then do (mine) ->
