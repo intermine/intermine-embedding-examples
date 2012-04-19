@@ -6,6 +6,7 @@ InterMine Web Services demos and examples through the use of `imjs` or `widgets`
 1. `publications-displayers-imjs` a proof of concept displayers by defining behaviors in JavaScript
 1. `ratmine-widgets` enrichment widgets embedded and styled on a RatMine page
 1. `wormbase-tag-cloud-imjs` cloud of terms styled as a WormBase widget
+1. `grid-displayer` a JavaScript example of managing a dynamic grid of (fake) data
 
 ## To Run:
 
