@@ -21,19 +21,25 @@ unless Object::watch
           enumerable:   true
           configurable: true
 
+# Slugify a string (use on pathways).
+slugify = (text) -> text.replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, "_").replace(/\s/gi, "-").toLowerCase()
+
 # On DOM ready.
 $ () ->
 
+  # The mines we will be 'querying'.
+  mines = [ 'FlyMine', 'CoalMine', 'GoldMine' ]
+
   # Data for each 'mine'.
-  mines = [
-    'name':     "mine1"
-    'pathways': [ "pathway1", "pathway2", "pathway3" ]
+  data = [
+    'name':     "FlyMine"
+    'pathways': [ "glycoLysiS", "Glucuronic acid", "Citric acid cycle", ]
   ,
-    'name':     "mine2"
-    'pathways': [ "pathway2", "pathway3" ]
+    'name':     "GoldMine"
+    'pathways': [ "Glycolysis", "Inositol", "glucuronic acid" ]
   ,
-    'name':     "mine3"
-    'pathways': [ "pathway1", "pathway2" ]
+    'name':     "CoalMine"
+    'pathways': [ "citric acid CYCLE", "Inositol" ]
   ]
 
   # The grid/table.
@@ -43,15 +49,18 @@ $ () ->
   row = $('<tr/>')
   row.append $('<th/>')
   for mine in mines
-    row.append $('<th/>', { 'text': mine['name'] })
+    row.append $('<th/>', { 'text': mine })
   row.appendTo $('table#pathways thead')
 
   # Traverse the server data.
-  for mine in mines then do (mine) ->
+  for mine in data then do (mine) ->
     for pathway in mine.pathways then do (mine, pathway) ->
 
+      # Slugify pathway to get a 'unique' identifier.
+      slug = slugify pathway
+
       # Do we have this pathway already?
-      if not grid[pathway]?
+      if not grid[slug]?
 
         # Create the row.
         $("table#pathways tbody").append row = $("<tr/>").append($("<td/>",
@@ -60,18 +69,18 @@ $ () ->
         
         # Add row columns for each mine.
         do ->
-          p = grid[pathway] = {}
+          p = grid[slug] = {}
           for mine in mines
-            p[mine['name']] = do ->
+            p[mine] = do ->
               row.append el = $ '<td/>'
               el
             do ->
               # Watch for changes on each mine for this pathway and re-render view.
-              p.watch mine['name'], (a, el, newvalue) ->
+              p.watch mine, (a, el, newvalue) ->
                 el.html $("<span/>",
                   'class': "label label-success"
                   'text':  newvalue
                 )
 
       # Now add the pathway for this mine into the grid.
-      grid[pathway][mine['name']] = 'Yes'
+      grid[slug][mine['name']] = 'Yes'
