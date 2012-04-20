@@ -1,3 +1,7 @@
+
+/* Maintain and dynamically update data in a grid/table.
+*/
+
 (function() {
   var Grid,
     __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
@@ -11,16 +15,17 @@
     Grid.prototype.grid = {};
 
     function Grid(el, head) {
-      var column, row, _i, _len;
+      var column, columnS, row, _i, _len;
       $(el).append(this.body = $('<tbody/>'));
       row = $('<tr/>');
       row.append($('<th/>'));
       for (_i = 0, _len = head.length; _i < _len; _i++) {
         column = head[_i];
+        this.columns.push(columnS = this.slugify(column));
         row.append($('<th/>', {
-          'text': column
+          'text': column,
+          'class': columnS
         }));
-        this.columns.push(this.slugify(column));
       }
       row.appendTo($('<thead/>').appendTo($(el)));
     }
@@ -31,7 +36,9 @@
       rowS = this.slugify(row);
       columnS = this.slugify(column);
       if (__indexOf.call(this.rows, rowS) < 0) {
-        rowEl = $("<tr/>").append($("<td/>", {
+        rowEl = $("<tr/>", {
+          'class': rowS
+        }).append($("<td/>", {
           'text': row
         }));
         if (!this.rows.length) {
@@ -65,7 +72,9 @@
             columnS = _ref[_i];
             _results.push(_this.grid[rowS]['columns'][columnS] = (function() {
               var el;
-              rowEl.append(el = $('<td/>'));
+              rowEl.append(el = $('<td/>', {
+                'class': columnS
+              }));
               return el;
             })());
           }

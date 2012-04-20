@@ -17,10 +17,10 @@ class Grid
     row = $ '<tr/>'
     row.append $ '<th/>'
     for column in head
-      # Add the el.
-      row.append $('<th/>', { 'text': column })
       # Add the slug.
-      @columns.push @slugify column
+      @columns.push columnS = @slugify column
+      # Add the el.
+      row.append $('<th/>', { 'text': column, 'class': columnS })
     row.appendTo $('<thead/>').appendTo $(el)
 
   # Add an element to the grid.
@@ -33,8 +33,8 @@ class Grid
     if rowS not in @rows
 
       # Create the element.
-      rowEl = $("<tr/>").append($("<td/>",
-        'text': row # Use the original text.
+      rowEl = $("<tr/>", 'class': rowS).append($("<td/>",
+        'text':  row # Use the original text.
       ))
 
       # Is this the first row in the grid?
@@ -60,7 +60,7 @@ class Grid
         @grid[rowS] = { 'el': rowEl, 'columns': {} }
         for columnS in @columns
           @grid[rowS]['columns'][columnS] = do ->
-            rowEl.append el = $ '<td/>'
+            rowEl.append el = $ '<td/>', 'class': columnS
             el
 
     # We have the grid in place, add the element.
