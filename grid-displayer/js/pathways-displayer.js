@@ -1,37 +1,12 @@
 (function() {
-  var Grid;
-
-  if (!Object.prototype.watch) {
-    Object.defineProperty(Object.prototype, "watch", {
-      enumerable: false,
-      configurable: true,
-      writable: false,
-      value: function(prop, handler) {
-        var getter, newval, oldval, setter;
-        oldval = this[prop];
-        newval = oldval;
-        getter = function() {
-          return newval;
-        };
-        setter = function(val) {
-          oldval = newval;
-          return newval = handler.call(this, prop, oldval, val);
-        };
-        if (delete this[prop]) {
-          return Object.defineProperty(this, prop, {
-            get: getter,
-            set: setter,
-            enumerable: true,
-            configurable: true
-          });
-        }
-      }
-    });
-  }
+  var Grid,
+    __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   Grid = (function() {
 
     Grid.prototype.columns = [];
+
+    Grid.prototype.rows = [];
 
     Grid.prototype.grid = {};
 
@@ -51,31 +26,53 @@
     }
 
     Grid.prototype.add = function(row, column, data) {
-      var columnS, rowS,
+      var columnS, rowEl, rowS,
         _this = this;
       rowS = this.slugify(row);
       columnS = this.slugify(column);
-      if (!(this.grid[rowS] != null)) {
-        this.body.append(row = $("<tr/>").append($("<td/>", {
+      if (__indexOf.call(this.rows, rowS) < 0) {
+        rowEl = $("<tr/>").append($("<td/>", {
           'text': row
-        })));
+        }));
+        if (!this.rows.length) {
+          this.body.append(rowEl);
+          this.rows = [rowS];
+        } else {
+          (function() {
+            var index, row, _ref;
+            _ref = _this.rows;
+            for (index in _ref) {
+              row = _ref[index];
+              if (rowS.localeCompare(row) < 0) {
+                _this.rows.splice(index, 0, rowS);
+                _this.grid[row]['el'].before(rowEl);
+                return;
+              }
+            }
+            _this.rows.push(rowS);
+            return _this.body.append(rowEl);
+          })();
+        }
         (function() {
-          var column, p, _i, _len, _ref, _results;
-          p = _this.grid[rowS] = {};
+          var columnS, _i, _len, _ref, _results;
+          _this.grid[rowS] = {
+            'el': rowEl,
+            'columns': {}
+          };
           _ref = _this.columns;
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            column = _ref[_i];
-            _results.push(p[column] = (function() {
+            columnS = _ref[_i];
+            _results.push(_this.grid[rowS]['columns'][columnS] = (function() {
               var el;
-              row.append(el = $('<td/>'));
+              rowEl.append(el = $('<td/>'));
               return el;
             })());
           }
           return _results;
         })();
       }
-      return this.grid[rowS][columnS].html(data);
+      return this.grid[rowS]['columns'][columnS].html(data);
     };
 
     Grid.prototype.slugify = function(text) {
@@ -92,13 +89,13 @@
     data = [
       {
         'name': "FlyMine",
-        'pathways': ["glycoLysiS", "Glucuronic acid", "Citric acid cycle"]
+        'pathways': ["glycoLysis", "Glucuronic acid", "Lipogenesis", "Citric acid cycle", "Oxidative phosphorylation"]
       }, {
         'name': "GoldMine",
-        'pathways': ["Glycolysis", "Inositol", "glucuronic acid"]
+        'pathways': ["Nitrogen metabolism", "Glycolysis", "Oxidative phosphorylation", "Inositol", "glucuronic acid"]
       }, {
         'name': "CoalMine",
-        'pathways': ["citric acid CYCLE", "Inositol"]
+        'pathways': ["citric acid CYCLE", "Lipogenesis", "inositol", "Nitrogen metabolism"]
       }
     ];
     grid = new Grid('table#pathways', mines);

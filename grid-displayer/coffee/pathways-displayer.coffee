@@ -1,29 +1,12 @@
-# Object.watch shim.
-unless Object::watch
-  Object.defineProperty Object::, "watch",
-    enumerable:   false
-    configurable: true
-    writable:     false
-    
-    value: (prop, handler) ->
-      oldval = this[prop]
-      newval = oldval
-      getter = -> newval
-
-      setter = (val) ->
-        oldval = newval
-        newval = handler.call(this, prop, oldval, val)
-
-      if delete this[prop]
-        Object.defineProperty this, prop,
-          get:          getter
-          set:          setter
-          enumerable:   true
-          configurable: true
-
+### Maintain and dynamically update data in a grid/table.###
 class Grid
 
+  # Holds the slugified columns.
   columns: []
+  # Holds the slugified rows in order.
+  rows:    []
+
+  # Actual storage of data.
   grid:    {}
 
   constructor: (el, head) ->
@@ -47,22 +30,41 @@ class Grid
     columnS = @slugify column
 
     # Do we have this pathway already?
-    if not @grid[rowS]?
-      # Create the row.
-      @body.append row = $("<tr/>").append($("<td/>",
-        'text': row
+    if rowS not in @rows
+
+      # Create the element.
+      rowEl = $("<tr/>").append($("<td/>",
+        'text': row # Use the original text.
       ))
 
-      # Add row columns.
+      # Is this the first row in the grid?
+      if not @rows.length
+        # Create the row, append to `<tbody>`.
+        @body.append rowEl
+        @rows = [rowS]
+      else
+        # Append in order.
+        do =>
+          for index, row of @rows
+            if rowS.localeCompare(row) < 0
+              # Insert at a specified index.
+              @rows.splice index, 0, rowS
+              @grid[row]['el'].before rowEl
+              return
+          # Append at the end.
+          @rows.push rowS
+          @body.append rowEl
+
+      # Add row `<td>` columns to the actual grid.
       do =>
-        p = @grid[rowS] = {}
-        for column in @columns
-          p[column] = do ->
-            row.append el = $ '<td/>'
+        @grid[rowS] = { 'el': rowEl, 'columns': {} }
+        for columnS in @columns
+          @grid[rowS]['columns'][columnS] = do ->
+            rowEl.append el = $ '<td/>'
             el
 
     # We have the grid in place, add the element.
-    @grid[rowS][columnS].html data
+    @grid[rowS]['columns'][columnS].html data
 
   # Slugify a string.
   slugify: (text) -> text.replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, "_").replace(/\s/gi, "-").toLowerCase()
@@ -77,13 +79,13 @@ $ () ->
   # Data for each 'mine'.
   data = [
     'name':     "FlyMine"
-    'pathways': [ "glycoLysiS", "Glucuronic acid", "Citric acid cycle", ]
+    'pathways': [ "glycoLysis", "Glucuronic acid", "Lipogenesis", "Citric acid cycle", "Oxidative phosphorylation" ]
   ,
     'name':     "GoldMine"
-    'pathways': [ "Glycolysis", "Inositol", "glucuronic acid" ]
+    'pathways': [ "Nitrogen metabolism", "Glycolysis", "Oxidative phosphorylation", "Inositol", "glucuronic acid" ]
   ,
     'name':     "CoalMine"
-    'pathways': [ "citric acid CYCLE", "Inositol" ]
+    'pathways': [ "citric acid CYCLE", "Lipogenesis", "inositol", "Nitrogen metabolism" ]
   ]
 
   grid = new Grid('table#pathways', mines)
