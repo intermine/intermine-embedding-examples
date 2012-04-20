@@ -21,8 +21,52 @@ unless Object::watch
           enumerable:   true
           configurable: true
 
-# Slugify a string (use on pathways).
-slugify = (text) -> text.replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, "_").replace(/\s/gi, "-").toLowerCase()
+class Grid
+
+  columns: []
+  grid:    {}
+
+  constructor: (el, head) ->
+    # Add target for body of the grid.
+    $(el).append @body = $ '<tbody/>'
+
+    # Generate the `<thead>`.
+    row = $ '<tr/>'
+    row.append $ '<th/>'
+    for column in head
+      # Add the el.
+      row.append $('<th/>', { 'text': column })
+      # Add the slug.
+      @columns.push @slugify column
+    row.appendTo $('<thead/>').appendTo $(el)
+
+  # Add an element to the grid.
+  add: (row, column, data) ->
+    # Slugify the row and column.
+    rowS = @slugify row
+    columnS = @slugify column
+
+    # Do we have this pathway already?
+    if not @grid[rowS]?
+      # Create the row.
+      @body.append row = $("<tr/>").append($("<td/>",
+        'text': row
+      ))
+
+      # Add row columns.
+      do =>
+        p = @grid[rowS] = {}
+        for column in @columns
+          p[column] = do ->
+            row.append el = $ '<td/>'
+            el
+
+    # We have the grid in place, add the element.
+    @grid[rowS][columnS].html data
+
+  # Slugify a string.
+  slugify: (text) -> text.replace(/[^-a-zA-Z0-9,&\s]+/ig, '').replace(/-/gi, "_").replace(/\s/gi, "-").toLowerCase()
+
 
 # On DOM ready.
 $ () ->
@@ -42,45 +86,11 @@ $ () ->
     'pathways': [ "citric acid CYCLE", "Inositol" ]
   ]
 
-  # The grid/table.
-  window.Grid = grid = {}
-
-  # Generate the `<thead>`.
-  row = $ '<tr/>'
-  row.append $ '<th/>'
-  for mine in mines
-    row.append $('<th/>', { 'text': mine })
-  row.appendTo $ 'table#pathways thead'
+  grid = new Grid('table#pathways', mines)
 
   # Traverse the server data.
   for mine in data then do (mine) ->
     for pathway in mine.pathways then do (mine, pathway) ->
 
-      # Slugify pathway to get a 'unique' identifier.
-      slug = slugify pathway
-
-      # Do we have this pathway already?
-      if not grid[slug]?
-
-        # Create the row.
-        $("table#pathways tbody").append row = $("<tr/>").append($("<td/>",
-          'text': pathway
-        ))
-        
-        # Add row columns for each mine.
-        do ->
-          p = grid[slug] = {}
-          for mine in mines
-            p[mine] = do ->
-              row.append el = $ '<td/>'
-              el
-            do ->
-              # Watch for changes on each mine for this pathway and re-render view.
-              p.watch mine, (a, el, newvalue) ->
-                el.html $("<span/>",
-                  'class': "label label-success"
-                  'text':  newvalue
-                )
-
       # Now add the pathway for this mine into the grid.
-      grid[slug][mine['name']] = 'Yes'
+      grid.add pathway, mine['name'], $("<span/>", 'class': 'label label-success', 'text':  'Yes')
