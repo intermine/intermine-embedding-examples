@@ -1,6 +1,6 @@
 [submodule "lib/imjs"]
 	path = lib/imjs
-	url = https://github.com/alexkalderimis/imjs.git
+	url = git@github.com:alexkalderimis/imjs.git
 [submodule "lib/widgets"]
 	path = lib/widgets
 	url = git@github.com:radekstepan/intermine-widget-client.git
