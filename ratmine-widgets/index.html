@@ -18,6 +18,7 @@
         .widget { margin:20px; width:460px; }
         .widget h3 { color:#000; margin:0; }
         .widget div.wrapper { border:0; width:auto; }
+        .widget label { font-size:11px; }
         .widget table { border-collapse:collapse; border-spacing:0; width:100%; } 
         .widget th { padding:0 8px; }
         .widget tr:nth-child(odd) td { background:#FAFAE6; }
@@ -32,21 +33,23 @@
     </style>
 
     <!-- widgets.js -->
-    <script src="../lib/widgets/js/widgets.js"></script>
+    <script src="http://cdn.intermine.org/api"></script>
 
     <script type="text/javascript">
-    (function() {
+    intermine.load('widgets', function() {
         /* InterMine root URL. */
-        var mine = "http://aragorn:8080/flymine";
+        var mine = "http://beta.flymine.org/beta";
 
         /* New Widgets client. */
-        var widgets = new Widgets(mine + "/service/");
+        var widgets = new intermine.widgets(mine + "/service/");
 
         /* Give us BDGP Expression Patterns Enrichment Widget. */
         widgets.enrichment('go_enrichment_for_gene', 'demo-genes', '#go-widget');
 
         /* Give us Protein Domain Enrichment Widget. */
-        widgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#protein-domain-widget');
+        widgets.enrichment('prot_dom_enrichment_for_gene', 'demo-genes', '#protein-domain-widget');        
+    });
+    (function() {
     })();
     </script>
 </head>
