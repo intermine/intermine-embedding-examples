@@ -1,0 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+body { background:url('../img/dust.png'); font-family:"PT Sans", sans-serif; }
+.container { background:#FFF; width:80%; margin:0 auto; }
+.row { padding:0px 20px; }
+.row:after { clear:both; content:" "; display:block; }
+.left { width:68%; float:left; margin:0 1%; }
+.right { width:28%; float:left; margin:0 1%; }
+h1,h2,h3 { font-weight:normal; color:#0000A1; }
+h1 { padding-top:10px; }
+h2 { color:#8E0022; }
+code { background:inherit; font-weight:normal; font-size:14px; }
+.row { padding-bottom:20px; }
+a, a:hover { color:#9FC0FF; cursor:pointer; }
+p { margin:0; }
+.bootstrap { font-family:"PT Sans", sans-serif !important; }
+.bootstrap h3 { color:#8E0022; font-weight:normal; font-size:24px; margin-bottom:20px; }
+#widget { margin-top:20px; }
