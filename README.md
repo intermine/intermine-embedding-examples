@@ -1,6 +1,6 @@
 InterMine Web Services demos and examples through the use of `imjs` or `widgets`.
 
-![image](https://github.com/radekstepan/intermine-embedding-examples/raw/master/example.png)
+![image](https://github.com/intermine/intermine-embedding-examples/raw/master/example.png)
 
 ## Content:
 
