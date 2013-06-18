@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Make a New List</title>
+
+    <!-- make us a bit more pretty -->
+    <link href="http://cdn.intermine.org/css/foundation/4.0/css/foundation.min.css" rel="stylesheet" type="text/css">
+
+    <style>
+    body { margin: 20px; }
+    body:before { content: 'Make a new List'; font-weight: bold; }
+    input[type="checkbox"] { margin: 10px; }
+    </style>
+
+    <!-- so that I can make nice onclick events + transport layer -->
+    <script src="http://cdn.intermine.org/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+
+    <!-- a dependency for imjs -->
+    <script src="http://cdn.intermine.org/js/underscore.js/1.4.4/underscore-min.js"></script>
+    
+    <!-- finally imjs for talking to InterMine -->
+    <script src="http://cdn.intermine.org/js/intermine/imjs/2.6.0/im.min.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+        // Body reference.
+        var body = $('body');
+
+        // We will be using FlyMine Beta for this example.
+        var service = new intermine.Service({
+            'root': 'http://beta.flymine.org/beta/service/',
+            'token': 'y1r3DfH5Y6LdQbP2l1O4',
+            // Global mess handler.
+            errorHandler: function(err) {
+                // Append a notification about it.
+                body.append($('<div/>', {
+                    'class': 'alert-box alert',
+                    'text': JSON.stringify(err)
+                }));
+                // Quit after first error ya.
+                throw(err);
+            }
+        });
+
+        // Create the table.
+        var table = $('<table/>');
+
+        // Create a button for creating lists.
+        var button = $('<button/>', {
+            'class': 'disabled button',
+            'text': 'Create a list',
+            // Click handler.
+            click: function() {
+                // Do nothing if we are disabled.
+                if ($(this).hasClass('disabled')) return;
+
+                // Get all of the checked rows' identifiers.
+                var ids = [];
+                table.find('tr').has(':checkbox:checked').each(function(i, el) {
+                    ids.push($(el).data('identifier'));
+                });
+                // Make a PathQuery in JS.
+                var query = {
+                    'model': { 'name': 'genomic' },
+                    'select': [ 'Gene.*' ],
+                    'constraints': [ { 'path': 'Gene.primaryIdentifier', 'op': 'ONE OF', 'values': ids } ]
+                };
+                // Turn into a PathQuery Object.
+                service.query(query, function(q) {
+                    // Generate a 'unique' list name.
+                    var name = 'new-list-imjs ' + new Date;
+                    // Save it as a list.
+                    q.saveAsList({ 'name': name }, function(l) {
+                        // It worked! Message about it.
+                        body.append($('<div/>', {
+                            'class': 'alert-box success',
+                            'html': 'List "' + name + '" has been created'
+                        }));
+                    });
+                });
+            }
+        });
+        
+        // Take some symbols.
+        var symbols = [ 'CG9151', 'FBgn0000099', 'CG3629', 'TfIIB', 'Mad', 'CG1775', 'CG2262', 'TWIST_DROME', 'tinman' ];
+
+        // Resolve them in Flymine.
+        service.resolveIds({ 'identifiers': symbols, 'type': 'Gene' })
+        .then(function(job) {
+            job.poll().then(function(results) {
+                // Counter of how many rows are checked.
+                var checked = 0;
+                // Go through each result.
+                for (var i in results) {
+                    var obj = results[i];
+                    // Create the row.
+                    var row = $('<tr/>', { 'data-identifier': obj.summary.primaryIdentifier });
+                    // Lead the row with a checkbox.
+                    row.append($('<input/>', {
+                        'type': 'checkbox',
+                        // If we click you...
+                        click: function(e) {
+                            // Increase or decrease the total checked count based on our status.
+                            if ($(e.target).is(':checked')) {
+                                checked += 1; // moar
+                            } else {
+                                checked -= 1; // less
+                            }
+                            // Now disable/enable our button based on how many rows are checked.
+                            if (!!checked) {
+                                button.removeClass('disabled');
+                            } else {
+                                button.addClass('disabled');
+                            }
+                        }
+                    }));
+                    // For each summary field.
+                    for (var j in obj.summary) {
+                        // Create the column.
+                        var column = $('<td/>', { 'text': obj.summary[j] });
+                        // Append to the row.
+                        row.append(column);
+                    }
+                    // Append the row to the table
+                    table.append(row);
+                }
+                // Append the table to the body.
+                body.append(table);
+
+                // Add a button to create a list.
+                body.append(button);
+            });
+        });
+    });
+    </script>
+</head>
+<body>
+    <table>
+        <thead></thead>
+    </table>
+</body>
+</html>

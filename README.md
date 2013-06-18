@@ -12,6 +12,7 @@ InterMine Web Services demos and examples through the use of `imjs` or `widgets`
 1. `mgi-tag-cloud-imjs` cloud of terms with a toggler styled inside an MGI page
 1. `new-list-in-widgets` creates a new list to then use it in an List Widget context
 1. `results-tables` has a quick & dirty example of turning a mine's PathQuery into a Results Table
+1. `new-list-imjs` shows how to select some object ids and make them into a list
 
 ## To Run:
 
